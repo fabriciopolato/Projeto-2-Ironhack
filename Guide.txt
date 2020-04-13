@@ -2,14 +2,17 @@ Feito:
 1.criar model (User)
 
 ---------------
+Quase Finalizado:
+3.criar as views de signup e login (signup.hbs e login.hbs) - Fabricio
+
+---------------
 Em Andamento:
 4.criar view de perfil (profile.hbs) - Vinicius
-3.criar as views de signup e login (signup.hbs e login.hbs) - Fabricio
-7.criar login social com passport (facebook/google/local)
+7.criar login social com passport (facebook/google/local) - Fabricio
 6.criar rotas para todas as views - Vinicius e Fabricio
 
 ---------------
 Para Fazer:
 2.criar view home
-5.criar view de pesquisa (search.hbs) 
+5.criar view de pesquisa (search.hbs)
 8.criar banco de dados
