@@ -1,0 +1,89 @@
+EDIT
+<form action="/edit" method="POST">
+    <div>
+        <input type="hidden" value="{{_id}}" name="_id">
+    </div>
+    <div>
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" value="{{username}}" name="username">
+    </div>
+    <br>
+    <div>
+        <label for="age">Idade:</label>
+        <input type="text" value="{{age}}" name="age">
+    </div>
+    <br>
+    <div>
+        <label for="gender">Gênero:</label>
+        <br>
+        <input type="radio" name="gender" value="male" checked>
+        <label for="male">Homem</label><br>
+        <input type="radio" name="gender" value="female">
+        <label for="female">Mulher</label><br>
+    </div>
+    <br>
+    <div>
+        <label for="state">Estado:</label>
+        <input type="text" placeholder="São Paulo" value="{{state}}" name="state">
+    </div>
+
+    <div>
+        <label for="city">Cidade:</label>
+        <input type="text" value="{{city}}" name="city">
+    </div>
+    <br>
+    <div>
+        <label for="level">Campo de Conhecimento:</label>
+        <br>
+        <input type="checkbox" name="rock">
+        <label for="rock"> Rock</label><br>
+        <input type="checkbox" name="jazz/blues">
+        <label for="jazz/blues"> Jazz/Blues</label><br>
+        <input type="checkbox" name="MPB">
+        <label for="MPB"> MPB</label><br>
+        <input type="checkbox" name="sertanejo">
+        <label for="sertanejo"> Sertanejo</label><br>
+        <input type="checkbox" name="eletrônico">
+        <label for="eletrônico"> Eletrônico</label><br>
+        <input type="checkbox" name="clássica">
+        <label for="clássica"> Clássica</label><br>
+        <input type="checkbox" name="metal">
+        <label for="metal"> Metal</label><br>
+    </div>
+    <br>
+    <div>
+        <label for="specialty">Especialidade:</label>
+        <input type="text" value="{{specialty}}" name="specialty">
+    </div>
+    <br>
+    <label for="level">Nível de Conhecimento:</label>
+    <div>
+        <input type="radio" name="level" value="Iniciante" checked>
+        <label for="Iniciante">Iniciante</label><br>
+        <input type="radio" name="level" value="Intermediário">
+        <label for="Intermediário">Intermediário</label><br>
+        <input type="radio" name="level" value="Avançado">
+        <label for="Avançado">Avançado</label><br>
+        <input type="radio" name="level" value="Profissional">
+        <label for="Profissional">Profissional</label><br>
+    </div>
+    <br>
+    <div>
+        <label for="facebook">Facebook:</label>
+        <input type="text" value="{{facebook}}" name="facebook">
+    </div>
+    <br>
+    <div>
+        <label for="instagram">Instagram:</label>
+        <input type="text" value="{{instagram}}" name="instagram">
+    </div>
+    <br>
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" value="{{email}}" name="email">
+    </div>
+    <br>
+    <div>
+        <input type="submit" value="Save">
+    </div>
+</form>

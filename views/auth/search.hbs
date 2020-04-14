@@ -1,18 +1,21 @@
+SEARCH
+<a href="/profile"><button>My Profile</button></a>
+
 <form action="/search" method="POST">
     <div>
         <label for="username">Username:</label>
         <input type="text" name="username">
     </div>
-<br>
+    <br>
     <div>
-        <input type="checkbox" name="m/f">
-        <label for="m/f"> H/M</label><br>
-        <input type="checkbox" name="male">
-        <label for="male"> Homem</label><br>
-        <input type="checkbox" name="female">
-        <label for="female"> Mulher</label><br>
+        <label for="gender">Gênero:</label>
+        <select id="gender" name="gender">
+            <option value="male-and-female">Ambos</option>
+            <option value="male">Homem</option>
+            <option value="female">Mulher</option>
+        </select>
     </div>
-<br>
+    <br>
     <div>
         <label for="state">Estado:</label>
         <input type="text" name="state">
@@ -22,7 +25,7 @@
         <label for="city">Cidade:</label>
         <input type="text" name="city">
     </div>
-<br>
+    <br>
     <div>
         <input type="checkbox" name="rock">
         <label for="rock"> Rock</label><br>
@@ -39,12 +42,12 @@
         <input type="checkbox" name="metal">
         <label for="metal"> Metal</label><br>
     </div>
-<br>
+    <br>
     <div>
         <label for="specialty">Especialidade:</label>
         <input type="text" name="specialty">
     </div>
-<br>
+    <br>
     <div>
         <input type="checkbox" name="basic">
         <label for="basic"> Básico</label><br>
@@ -55,14 +58,14 @@
         <input type="checkbox" name="professional">
         <label for="professional"> Profissional</label><br>
     </div>
-<br>
+    <br>
     <div>
         <input type="submit" value="Search">
     </div>
 </form>
 
-    {{#each user}}
+{{#each user}}
 <div>
     {{this.username}}
 </div>
-    {{/each}}
+{{/each}}

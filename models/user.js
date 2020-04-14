@@ -8,13 +8,13 @@ const userSchema = new Schema ({
         unique: true
     },
     password: String,
-    genre: String,
+    gender: String,
     age: Number,
     state: String,
     city: String,
     specialty: 
     {
-        type: String,
+        type: [String],
         enum: ['Guitarra/Violão','Baixo','Bateria','Percussão','Vocal','Piano Bar/Teclado','Violino','Saxofone','Flauta']
     },
     level: 
@@ -22,9 +22,9 @@ const userSchema = new Schema ({
         type: String,
         enum: ['Iniciante','Intermediário','Avançado','Profissional']
     },
-    musicalGenre: 
+    musicalInfluence: 
     {
-        type: String, 
+        type: [String], 
         num: ['Rock','Jazz/Blues','MPB','Sertanejo','Eletrônico','Clássica','Metal']
     },
     facebook: String,
