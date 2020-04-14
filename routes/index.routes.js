@@ -10,4 +10,8 @@ router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     res.render('auth/profile')
 })
 
+router.get('/search', (req, res, next) => {
+  res.render('auth/search')
+})
+
 module.exports = router;
