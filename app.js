@@ -80,14 +80,6 @@ passport.use(new LocalStrategy({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(
-  require("node-sass-middleware")({
-    src: path.join(__dirname, "public"),
-    dest: path.join(__dirname, "public"),
-    sourceMap: true,
-  })
-);
-
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
