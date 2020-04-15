@@ -3,14 +3,14 @@ SEARCH
 
 <form action="/search" method="POST">
     <div>
-        <label for="username">Username:</label>
+        <label for="username">Nome de Usuário:</label>
         <input type="text" name="username">
     </div>
     <br>
     <div>
         <label for="gender">Gênero:</label>
         <select id="gender" name="gender">
-            <option value="male-and-female">Ambos</option>
+            <option value=["male", "female"]>Ambos</option>
             <option value="male">Homem</option>
             <option value="female">Mulher</option>
         </select>
@@ -27,19 +27,19 @@ SEARCH
     </div>
     <br>
     <div>
-        <input type="checkbox" name="rock">
+        <input type="checkbox" value="Rock" name="musicalInfluence">
         <label for="rock"> Rock</label><br>
-        <input type="checkbox" name="jazz/blues">
+        <input type="checkbox" value="Jazz/Blues" name="musicalInfluence">
         <label for="jazz/blues"> Jazz/Blues</label><br>
-        <input type="checkbox" name="MPB">
+        <input type="checkbox" value="MPB" name="musicalInfluence">
         <label for="MPB"> MPB</label><br>
-        <input type="checkbox" name="sertanejo">
+        <input type="checkbox" value="Sertanejo" name="musicalInfluence">
         <label for="sertanejo"> Sertanejo</label><br>
-        <input type="checkbox" name="eletrônico">
+        <input type="checkbox" value="Eletrônico" name="musicalInfluence">
         <label for="eletrônico"> Eletrônico</label><br>
-        <input type="checkbox" name="clássica">
+        <input type="checkbox" value="Clássica" name="musicalInfluence">
         <label for="clássica"> Clássica</label><br>
-        <input type="checkbox" name="metal">
+        <input type="checkbox" value="Metal" name="musicalInfluence">
         <label for="metal"> Metal</label><br>
     </div>
     <br>
@@ -49,13 +49,13 @@ SEARCH
     </div>
     <br>
     <div>
-        <input type="checkbox" name="basic">
-        <label for="basic"> Básico</label><br>
-        <input type="checkbox" name="intermediate">
+        <input type="checkbox" name="basic" value='Iniciante'>
+        <label for="basic"> Iniciante</label><br>
+        <input type="checkbox" name="intermediate" value="Intermediário">
         <label for="intermediate"> Intermediário</label><br>
-        <input type="checkbox" name="advanced">
+        <input type="checkbox" name="advanced" value="Avançado">
         <label for="advanced"> Avançado</label><br>
-        <input type="checkbox" name="professional">
+        <input type="checkbox" name="professional" value="Professional">
         <label for="professional"> Profissional</label><br>
     </div>
     <br>
@@ -66,6 +66,6 @@ SEARCH
 
 {{#each user}}
 <div>
-    {{this.username}}
+    <a href="/profile/{{_id}}">{{this.username}} {{this.gender}}</a>
 </div>
 {{/each}}

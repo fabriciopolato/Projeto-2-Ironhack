@@ -47,6 +47,7 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.get("/login", (req, res, next) => {
+  const user = req.user;
   res.render("login");
 });
 

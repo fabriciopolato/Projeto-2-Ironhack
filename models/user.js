@@ -27,6 +27,7 @@ const userSchema = new Schema ({
         type: [String], 
         num: ['Rock','Jazz/Blues','MPB','Sertanejo','Eletrônico','Clássica','Metal']
     },
+    bio: String,
     facebook: String,
     instagram: String,
     email: String

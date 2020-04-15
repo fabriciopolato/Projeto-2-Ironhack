@@ -1,5 +1,5 @@
 EDIT
-<form action="/edit" method="POST">
+<form action="/edit" id="edit-form" method="POST">
     <div>
         <input type="hidden" value="{{_id}}" name="_id">
     </div>
@@ -35,19 +35,19 @@ EDIT
     <div>
         <label for="level">Campo de Conhecimento:</label>
         <br>
-        <input type="checkbox" name="rock">
+        <input type="checkbox" name="musicalInfluence" value="Rock">
         <label for="rock"> Rock</label><br>
-        <input type="checkbox" name="jazz/blues">
+        <input type="checkbox" name="musicalInfluence" value="Jazz/Blues">
         <label for="jazz/blues"> Jazz/Blues</label><br>
-        <input type="checkbox" name="MPB">
+        <input type="checkbox" name="musicalInfluence" value="MPB">
         <label for="MPB"> MPB</label><br>
-        <input type="checkbox" name="sertanejo">
+        <input type="checkbox" name="musicalInfluence" value="Sertanejo">
         <label for="sertanejo"> Sertanejo</label><br>
-        <input type="checkbox" name="eletrônico">
+        <input type="checkbox" name="musicalInfluence" value="Eletronico">
         <label for="eletrônico"> Eletrônico</label><br>
-        <input type="checkbox" name="clássica">
+        <input type="checkbox" name="musicalInfluence" value="Clássica">
         <label for="clássica"> Clássica</label><br>
-        <input type="checkbox" name="metal">
+        <input type="checkbox" name="musicalInfluence" value="Metal">
         <label for="metal"> Metal</label><br>
     </div>
     <br>
@@ -68,6 +68,9 @@ EDIT
         <label for="Profissional">Profissional</label><br>
     </div>
     <br>
+    <textarea name="bio" placeholder="Conte um pouco sobre você..." form="edit-form" >{{bio}}</textarea>
+    <br>
+    <br>
     <div>
         <label for="facebook">Facebook:</label>
         <input type="text" value="{{facebook}}" name="facebook">
@@ -87,3 +90,4 @@ EDIT
         <input type="submit" value="Save">
     </div>
 </form>
+<a href="/profile"><button>Cancel</button></a>
