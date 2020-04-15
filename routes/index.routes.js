@@ -4,8 +4,10 @@ const ensureLogin = require("connect-ensure-login");
 const User = require("../models/user");
 
 router.get("/", (req, res, next) => {
+  // User.collection.drop();
   res.render("home");
 });
+
 router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render("auth/profile");
 });
@@ -27,8 +29,6 @@ router.get("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
 router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const {
     username,
-    gender,
-    age,
     state,
     city,
     specialty,
@@ -39,9 +39,40 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
     email,
   } = req.body;
 
-  User.find({ username: { $regex: username, $options: "i" }},{ password: 0 })
-    .then((user) => {
-      res.render("auth/search", { user });
+  let {gender} = req.body;
+
+  console.log(gender)
+  if(gender === 'both') {
+    gender = ['male', 'female']
+  } else {
+    gender = [gender]
+  }
+
+  let query = {};
+
+  if(musicalInfluence) {
+    
+    if(level) {
+      query = { $and: [{username: { $regex: username, $options: "i" }}, {gender: {$in: gender}}, {state: { $regex: state, $options: "i" }}, {city: { $regex: city, $options: "i" }}, {musicalInfluence: {$in: musicalInfluence}}, {level: {$in: level}}] }
+    } else {
+      query = { $and: [{username: { $regex: username, $options: "i" }}, {gender: {$in: gender}}, {state: { $regex: state, $options: "i" }}, {city: { $regex: city, $options: "i" }}, {musicalInfluence: {$in: musicalInfluence}}] }
+    }
+
+  } else {
+
+    if(level) {
+      query = { $and: [{username: { $regex: username, $options: "i" }}, {gender: {$in: gender}}, {state: { $regex: state, $options: "i" }}, {city: { $regex: city, $options: "i" }}, {level: {$in: level}}] }
+    } else {
+      query = { $and: [{username: { $regex: username, $options: "i" }}, {gender: {$in: gender}}, {state: { $regex: state, $options: "i" }}, {city: { $regex: city, $options: "i" }}] }
+    }
+  }
+
+
+  User.find(query,{ password: 0 })
+  // User.find({ state: state },{ password: 0 })
+    .sort({username: 1})
+    .then((users) => {
+      res.render("auth/search", { users });
     })
     .catch((err) => console.log(err));
 });

@@ -10,7 +10,7 @@ SEARCH
     <div>
         <label for="gender">Gênero:</label>
         <select id="gender" name="gender">
-            <option value=["male", "female"]>Ambos</option>
+            <option value="both">Ambos</option>
             <option value="male">Homem</option>
             <option value="female">Mulher</option>
         </select>
@@ -49,13 +49,13 @@ SEARCH
     </div>
     <br>
     <div>
-        <input type="checkbox" name="basic" value='Iniciante'>
+        <input type="checkbox" name="level" value='Iniciante'>
         <label for="basic"> Iniciante</label><br>
-        <input type="checkbox" name="intermediate" value="Intermediário">
+        <input type="checkbox" name="level" value="Intermediário">
         <label for="intermediate"> Intermediário</label><br>
-        <input type="checkbox" name="advanced" value="Avançado">
+        <input type="checkbox" name="level" value="Avançado">
         <label for="advanced"> Avançado</label><br>
-        <input type="checkbox" name="professional" value="Professional">
+        <input type="checkbox" name="level" value="Profissional">
         <label for="professional"> Profissional</label><br>
     </div>
     <br>
@@ -64,7 +64,7 @@ SEARCH
     </div>
 </form>
 
-{{#each user}}
+{{#each users}}
 <div>
     <a href="/profile/{{_id}}">{{this.username}} {{this.gender}}</a>
 </div>

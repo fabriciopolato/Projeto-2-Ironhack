@@ -8,7 +8,7 @@ const userSchema = new Schema ({
         unique: true
     },
     password: String,
-    gender: String,
+    gender: [String],
     age: Number,
     state: String,
     city: String,
@@ -19,7 +19,7 @@ const userSchema = new Schema ({
     },
     level: 
     { 
-        type: String,
+        type: [String],
         enum: ['Iniciante','Intermediário','Avançado','Profissional']
     },
     musicalInfluence: 
