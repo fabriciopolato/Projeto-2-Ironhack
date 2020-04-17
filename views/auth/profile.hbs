@@ -1,9 +1,9 @@
 PROFILE
-<a href="/logout"><button>Logout</button></a>
-<a href="/search"><button>Search</button></a>
+<a href="/logout"><button>Sair</button></a>
+<a href="/search"><button>Pesquisar</button></a>
 {{#unless username}}
 <a href="/delete"><button>Deletar Conta</button></a>
-<a href="/edit"><button>Edit</button></a>
+<a href="/edit"><button>Editar</button></a>
 {{/unless}}
 
 <h1>{{username}}</h1>
@@ -14,48 +14,71 @@ PROFILE
 <h1>{{level}}</h1>
 <h1>{{bio}}</h1>
 
+{{#if username}}
+<form action="/send-email" method="post">
+    <label for="">Email</label>
+    <input type="email" name="email" id="">
+    <label for="">Subject</label>
+    <input type="text" name="subject" id="">
+    <label for="">Message</label>
+    <textarea type="text" name="message" id=""></textarea>
+    <button type="submit">Submit</button>
+</form>
+{{/if}}
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="container emp-profile">
-    <form method="post">
+    <form  action="/profile" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/1/19/Bruce_Wayne_%28The_Dark_Knight_Trilogy%29.jpg"
+        <img src="{{user.imgPath}}"
                         alt="" />
                     <div class="file btn btn-lg btn-primary">
-                        Change Photo
-                        <input type="file" name="file" />
+                        Mudar foto do perfil
+                        <input type="file" name="photo" />
+                        <input type="hidden" value="{{user._id}}" name="_id">
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
                     <h5>
-                        Bruce Wayne
+                        {{user.name}}
                     </h5>
                     <h6>
-                        Professional Guitarist
+                        {{user.level}} {{user.specialty}}
                     </h6>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                aria-controls="home" aria-selected="true">About</a>
+                                aria-controls="home" aria-selected="true">Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                aria-controls="profile" aria-selected="false">Timeline</a>
+                                aria-controls="profile" aria-selected="false">Informações Pessoais</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Salvar" />
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-work">
-                    <p>About Me</p>
+                    <p>Perfil</p>
                 </div>
             </div>
             <div class="col-md-8">
@@ -63,18 +86,18 @@ PROFILE
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
                             <div class="col-md-6">
-                                <label>User Id</label>
+                                <label>Nome de Usuário</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Bruce_Wayne123</p>
+                                <p>{{user.username}}</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Name</label>
+                                <label>Nome</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Bruce Wayne</p>
+                                <p>{{user.name}} {{user.lastname}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -82,21 +105,21 @@ PROFILE
                                 <label>Email</label>
                             </div>
                             <div class="col-md-6">
-                                <p>darkknight@wayneenterprises.com</p>
+                                <p>{{user.email}}</p>
                             </div>
                         </div>
-                        <div class="row">
+                        {{!-- <div class="row">
                             <div class="col-md-6">
                                 <label>Phone</label>
                             </div>
                             <div class="col-md-6">
                                 <p>0800-BAT</p>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Specialty</label>
-                            </div> Guitarist
+                                <label>Especialidade</label>
+                            </div> {{user.specialty}}
                             <div class="col-md-6">
                                 <p></p>
                             </div>
@@ -105,21 +128,21 @@ PROFILE
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Skills</label>
-                            </div>Level
+                                <label>Nível</label>
+                            </div>
                             <div class="col-md-6">
-                                <p>Professional</p>
+                                <p>{{user.level}}</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Genre</label>
+                                <label>Campo de Conhecimento</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Metal</p>
+                                <p>{{user.musicalInfluence}}</p>
                             </div>
                         </div>
-                        <div class="row">
+                        {{!-- <div class="row">
                             <div class="col-md-6">
                                 <label>Influences</label>
                             </div>
@@ -148,13 +171,10 @@ PROFILE
                                 <label>One Song</label><br />
                                 <p>The Trooper</p>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
         </div>
     </form>
 </div>
-
-
-Mensagem de Vinícius

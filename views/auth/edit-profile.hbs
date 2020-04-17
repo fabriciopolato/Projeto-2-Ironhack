@@ -1,11 +1,26 @@
 EDIT
-<form action="/edit" id="edit-form" method="POST">
+{{#unless firstLogin}}
+<p>{{welcomeMessage}}</p>
+{{/unless}}
+
+
+<form action="/edit" method="POST">
     <div>
         <input type="hidden" value="{{_id}}" name="_id">
     </div>
     <div>
         <label for="username">Nome de Usuário:</label>
         <input type="text" value="{{username}}" name="username">
+    </div>
+    <br>
+    <div>
+        <label for="name">Nome:</label>
+        <input type="text" value="{{name}}" name="name">
+    </div>
+    <br>
+    <div>
+        <label for="lastname">Sobrenome:</label>
+        <input type="text" value="{{lastName}}" name="lastName">
     </div>
     <br>
     <div>
@@ -43,7 +58,7 @@ EDIT
         <label for="MPB"> MPB</label><br>
         <input type="checkbox" name="musicalInfluence" value="Sertanejo">
         <label for="sertanejo"> Sertanejo</label><br>
-        <input type="checkbox" name="musicalInfluence" value="Eletrônico">
+        <input type="checkbox" name="musicalInfluence" value="Eletronico">
         <label for="eletrônico"> Eletrônico</label><br>
         <input type="checkbox" name="musicalInfluence" value="Clássica">
         <label for="clássica"> Clássica</label><br>
@@ -67,11 +82,6 @@ EDIT
         <input type="radio" name="level" value="Profissional">
         <label for="Profissional">Profissional</label><br>
     </div>
-    <br>
-    <label for="bio">Biography:</label>
-    <br>
-    <textarea name="bio" placeholder="Conte um pouco sobre você..." form="edit-form" >{{bio}}</textarea>
-    <br>
     <br>
     <div>
         <label for="facebook">Facebook:</label>

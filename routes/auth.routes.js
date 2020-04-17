@@ -31,6 +31,8 @@ router.post("/signup", (req, res, next) => {
       const newUser = new User({
         username,
         password: hashPass,
+        firstLogin: false,
+        welcomeMessage: "Você está muito próximo de montar sua primeira banda de sucesso. Para que os outros integrantes da banda possam te encontrar, complete o seu cadastro!"
       });
 
       newUser.save((err) => {
