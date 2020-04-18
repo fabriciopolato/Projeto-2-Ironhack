@@ -1,10 +1,11 @@
-EDIT
+<div>
 {{#unless firstLogin}}
 <p>{{welcomeMessage}}</p>
 {{/unless}}
+</div>
 
 
-<form action="/edit" method="POST">
+<form action="/edit" method="POST" id='edit-form'>
     <div>
         <input type="hidden" value="{{_id}}" name="_id">
     </div>
@@ -19,7 +20,7 @@ EDIT
     </div>
     <br>
     <div>
-        <label for="lastname">Sobrenome:</label>
+        <label for="lastName">Sobrenome:</label>
         <input type="text" value="{{lastName}}" name="lastName">
     </div>
     <br>
@@ -50,25 +51,43 @@ EDIT
     <div>
         <label for="level">Campo de Conhecimento:</label>
         <br>
-        <input type="checkbox" name="musicalInfluence" value="Rock">
+        <input type="checkbox" name="musicalInfluence" value=" Rock">
         <label for="rock"> Rock</label><br>
-        <input type="checkbox" name="musicalInfluence" value="Jazz/Blues">
+        <input type="checkbox" name="musicalInfluence" value=" Jazz/Blues">
         <label for="jazz/blues"> Jazz/Blues</label><br>
-        <input type="checkbox" name="musicalInfluence" value="MPB">
+        <input type="checkbox" name="musicalInfluence" value=" MPB">
         <label for="MPB"> MPB</label><br>
-        <input type="checkbox" name="musicalInfluence" value="Sertanejo">
+        <input type="checkbox" name="musicalInfluence" value=" Sertanejo">
         <label for="sertanejo"> Sertanejo</label><br>
-        <input type="checkbox" name="musicalInfluence" value="Eletronico">
+        <input type="checkbox" name="musicalInfluence" value=" Eletrônico">
         <label for="eletrônico"> Eletrônico</label><br>
-        <input type="checkbox" name="musicalInfluence" value="Clássica">
+        <input type="checkbox" name="musicalInfluence" value=" Clássica">
         <label for="clássica"> Clássica</label><br>
-        <input type="checkbox" name="musicalInfluence" value="Metal">
+        <input type="checkbox" name="musicalInfluence" value=" Metal">
         <label for="metal"> Metal</label><br>
     </div>
     <br>
     <div>
-        <label for="specialty">Especialidade:</label>
-        <input type="text" value="{{specialty}}" name="specialty">
+        <label for="gender">Especialidade:</label>
+        <br>
+        <input type="checkbox" value=" Guitarra/Violão" name="specialty">
+        <label for="Guitarra/Violão"> Guitarra/Violão</label><br>
+        <input type="checkbox" value=" Baixo" name="specialty">
+        <label for="Baixo"> Baixo</label><br>
+        <input type="checkbox" value=" Bateria" name="specialty">
+        <label for="Bateria"> Bateria</label><br>
+        <input type="checkbox" value=" Percussão" name="specialty">
+        <label for="Percussão"> Percussão</label><br>
+        <input type="checkbox" value=" Vocal" name="specialty">
+        <label for="Vocal"> Vocal</label><br>
+        <input type="checkbox" value=" Piano Bar/Teclado" name="specialty">
+        <label for="Piano Bar/Teclado"> Piano Bar/Teclado</label><br>
+        <input type="checkbox" value=" Violino" name="specialty">
+        <label for="Violino"> Violino</label><br>
+        <input type="checkbox" value=" Saxofone" name="specialty">
+        <label for="Saxofone"> Saxofone</label><br>
+        <input type="checkbox" value=" Flauta" name="specialty">
+        <label for="Flauta"> Flauta</label><br>
     </div>
     <br>
     <label for="level">Nível de Conhecimento:</label>
@@ -81,6 +100,10 @@ EDIT
         <label for="Avançado">Avançado</label><br>
         <input type="radio" name="level" value="Profissional">
         <label for="Profissional">Profissional</label><br>
+    </div>
+    <br>
+    <div>
+        <textarea name="bio" form="edit-form" placeholder="Eu sou..."></textarea>
     </div>
     <br>
     <div>

@@ -9,18 +9,15 @@ const multer = require("multer");
 const Picture = require("../models/picture");
 
 router.get("/", (req, res, next) => {
-  // User.collection.drop();
   res.render("home");
 });
 
 router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  const user = req.user;
-  let _id = user._id;
+  const { _id } = req.user;
   User.findById(_id)
     .then((user) => {
-      _id = user._id;
       if (user.firstLogin === false) {
-        res.render("auth/edit-profile",  user);
+        res.render("auth/edit-profile", user);
       } else {
         Picture.find((err, pictures) => {
           res.render("auth/profile", { pictures, user });
@@ -28,6 +25,36 @@ router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res, next) => {
       }
     })
     .catch((err) => console.log(err));
+});
+
+const upload = multer({ dest: "./public/uploads/" });
+
+router.post("/profile", upload.single("photo"), (req, res) => {
+  const user = req.body;
+  const pic = new Picture({
+    name: req.body.namePhoto,
+    path: `/uploads/${req.file.filename}`,
+    originalName: req.file.originalname,
+  });
+
+  User.findByIdAndUpdate(
+    user._id,
+    {
+      $set: {
+        imgPath: pic.path,
+      },
+    },
+    {
+      new: true,
+    }
+  )
+    .then((user) => console.log(user))
+    .catch((err) => console.log(err));
+
+  Picture.collection.drop();
+  pic.save((err) => {
+    res.redirect("/profile");
+  });
 });
 
 router.get("/profile/:id", ensureLogin.ensureLoggedIn(), (req, res, next) => {
@@ -126,6 +153,8 @@ router.get("/edit", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const user = ({
     _id,
     username,
+    name,
+    lastName,
     gender,
     age,
     state,
@@ -160,6 +189,7 @@ router.post("/edit", (req, res, next) => {
     instagram,
     email,
   } = req.body;
+  console.log("***************",req.body)
 
   User.findByIdAndUpdate(
     _id,
@@ -187,7 +217,6 @@ router.post("/edit", (req, res, next) => {
     }
   )
     .then((response) => {
-      console.log('=========',response)
       res.redirect("/profile");
     })
     .catch((err) => console.log(err));
@@ -195,7 +224,6 @@ router.post("/edit", (req, res, next) => {
 
 router.get("/delete", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const user = req.user;
-  console.log(user);
   res.render("auth/delete", { user });
 });
 
@@ -230,36 +258,6 @@ router.post("/send-email", (req, res, next) => {
       res.render("auth/send-email", { email, subject, message, info })
     )
     .catch((error) => console.log(error));
-});
-
-const upload = multer({ dest: "./public/uploads/" });
-
-router.post("/profile", upload.single("photo"), (req, res) => {
-  const user = req.body;
-  const pic = new Picture({
-    name: req.body.namePhoto,
-    path: `/uploads/${req.file.filename}`,
-    originalName: req.file.originalname,
-  });
-
-  User.findByIdAndUpdate(
-    user._id,
-    {
-      $set: {
-        imgPath: pic.path,
-      },
-    },
-    {
-      new: true,
-    }
-  )
-    .then((user) => console.log(user))
-    .catch((err) => console.log(err));
-
-  Picture.collection.drop();
-  pic.save((err) => {
-    res.redirect("/profile");
-  });
 });
 
 module.exports = router;
