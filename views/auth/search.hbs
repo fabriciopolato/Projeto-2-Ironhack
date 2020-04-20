@@ -133,25 +133,32 @@
 
     {{#each users}}
     <div class="profile-card">
+        
         <div class="profile-photo">
             <a href="/profile/{{_id}}"><img src="{{this.imgPath}}" alt="profile photo"></a>
         </div>
-        <div class="name-lastname">
-            <a href="/profile/{{_id}}">{{this.name}} {{this.lastName}}</a>
-            <br>
-            <a href="/profile/{{_id}}">{{this.username}}</a>
+
+        <div class="info-card">
+            <div class="name-lastname">
+                <a href="/profile/{{_id}}">{{this.name}} {{this.lastName}}</a>
+                <br>
+                <a id="username-link" href="/profile/{{_id}}">{{this.username}}</a>
+            </div>
+            <div class="specialty-level">
+                <br>
+                <p>{{this.specialty}}</p>
+                <p>{{this.level}}</p>
+                <br>
+            </div>
+            <div class="musical-influence">
+                <ul>
+                    {{#each this.musicalInfluence}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
         </div>
-        <div class="specialty-level">
-            <p>{{this.specialty}}</p>
-            <br>
-            <p>{{this.level}}</p>
-        </div>
-        <div class="musical-influence">
-            {{#each this.musicalInfluence}}
-            <p>{{musical-influence}}</p>
-            <br>
-            {{/each}}
-        </div>
+
     </div>
 
     {{/each}}

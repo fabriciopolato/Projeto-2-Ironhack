@@ -1,9 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    /* background-image: url(/images/stadium-concert-stage-wallpaper.jpg); */
-    /* background-image: url(/images/background-lightred.jpeg); */
-    /* background-image: url(/images/black-white.jpeg); */
     background-image: url(/images/home-background.jpg);
 
     background-size: cover;
@@ -12,13 +9,8 @@ body {
 
 /* NAV */
 .container-nav {
-    background-color: rgba(21, 34, 53, 0);
+    background-color: rgba(178, 34, 34, 0);
 }
-
-.navbar-links:hover {
-    border-bottom: black solid;
-}
-
 
 /* MAIN SECTION */
 .main-section {

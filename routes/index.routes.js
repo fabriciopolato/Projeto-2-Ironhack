@@ -144,8 +144,7 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   User.find(query, { password: 0 })
     .sort({ username: 1 })
     .then((users) => {
-      console.log(query);
-      console.log("*************", req.body);
+      console.log("*************", users);
       res.render("auth/search", { users });
     })
     .catch((err) => console.log(err));
