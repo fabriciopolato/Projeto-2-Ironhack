@@ -11,9 +11,14 @@ body {
 }
 
 /* NAV */
-li a:hover {
+.container-nav {
+    background-color: rgba(21, 34, 53, 0);
+}
+
+.navbar-links:hover {
     border-bottom: black solid;
 }
+
 
 /* MAIN SECTION */
 .main-section {
@@ -26,7 +31,6 @@ li a:hover {
 .sign {
     background-color: rgba(0, 0, 0, 0.504);
     width: 30%;
-    /* color: rgb(65,65,65); */
     color: white;
     margin: 40px 0 0 100px;
     border-radius: 15px;

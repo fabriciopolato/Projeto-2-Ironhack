@@ -19,14 +19,14 @@
 		</div>
 		<div>
 			<ul class="list">
-				<li><a href="#">Sobre</a></li>
+				<li class="navbar-links"><a href="#">Sobre</a></li>
 				{{#unless username}}
-				<li><a href="/">Cadastrar</a></li>
-				<li><a href="/login">Login</a></li>
+				<li class="navbar-links"><a href="/">Cadastrar</a></li>
+				<li class="navbar-links"><a href="/login">Login</a></li>
                 <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
 				{{/unless}}
 				{{#if username}}
-				<li><a href="/logout">Sair</a></li>
+				<li class="navbar-links"><a href="/logout">Sair</a></li>
 				{{/if}}
 
 			</ul>

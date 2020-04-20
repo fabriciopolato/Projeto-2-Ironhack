@@ -19,7 +19,7 @@ const userSchema = new Schema ({
     specialty: 
     {
         type: [String],
-        enum: ['Guitarra/Violão','Baixo','Bateria','Percussão','Vocal','Piano Bar/Teclado','Violino','Saxofone','Flauta']
+        enum: ['Guitarra/Violão','Baixo','Bateria','Percussão','Vocal','Piano Bar/Teclado','Violino','Saxofone']
     },
     level: 
     { 
@@ -29,7 +29,7 @@ const userSchema = new Schema ({
     musicalInfluence: 
     {
         type: [String], 
-        num: ['Rock','Jazz & Blues','MPB','Sertanejo','Eletrônico','Clássica','Metal']
+        num: ['Rock', 'Metal', 'Jazz & Blues', 'Samba', 'MPB', 'Sertanejo', 'Clássica', 'Eletrônico']
     },
     lookingFor: String,
     bio: String,

@@ -1,0 +1,86 @@
+* {
+    font-family: "Airbnb Cereal App Medium";
+}
+
+form {
+    margin: 60px;
+    padding: 60px;
+    background-color: rgb(0, 0, 0) ;
+    color: white;
+    border-radius: 10px;
+}
+
+form input {
+    color: white;
+    border: white solid;
+    background-color: black;
+    padding-left: 5px;
+}
+
+#search-button:hover {
+    color: black;
+    background-color: white;
+}
+
+/* .form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+/* FIRST-ROW */
+.top-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.gender-box {
+    margin:0 20px 0 20px;
+}
+
+.city-state-box {
+    margin: 0 20px 0 20px;
+}
+
+.checkboxes {
+    display: flex;
+    flex-direction: row;
+}
+
+.musical-box-and-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.musical-influence-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.musical-second-col {
+    margin: 0 60px 0 40px;
+    border-right: 5px solid firebrick;
+    padding-right: 50px;
+}
+
+
+.specialty-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.specialty-second-col {
+    margin: 0 60px 0 40px;
+    border-right: 5px solid firebrick;
+    padding-right: 50px;
+}
+
+.specialty-box-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.level-box-label {
+    display: flex;
+    flex-direction: column;
+}

@@ -50,7 +50,7 @@ router.post("/profile", upload.single("photo"), (req, res) => {
       new: true,
     }
   )
-    .then((user) => console.log(user))
+    .then((user) => console.log('Photo added'))
     .catch((err) => console.log(err));
 
   Picture.collection.drop();
