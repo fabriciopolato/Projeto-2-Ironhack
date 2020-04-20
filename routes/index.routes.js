@@ -30,12 +30,14 @@ router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res, next) => {
 const upload = multer({ dest: "./public/uploads/" });
 
 router.post("/profile", upload.single("photo"), (req, res) => {
-  const user = req.body;
+  const user = req.user;
   const pic = new Picture({
     name: req.body.namePhoto,
+
     path: `/uploads/${req.file.filename}`,
     originalName: req.file.originalname,
   });
+  console.log('****************', pic)
 
   User.findByIdAndUpdate(
     user._id,
@@ -86,7 +88,7 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   let { gender } = req.body;
 
   if (gender === "both") {
-    gender = ["male", "female"];
+    gender = ["Homem", "Mulher"];
   } else {
     gender = [gender];
   }

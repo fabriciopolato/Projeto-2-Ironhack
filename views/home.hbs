@@ -4,56 +4,59 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.cdnfonts.com/css/hard-rock" rel="stylesheet">
-	<link rel="stylesheet" href="stylesheets/home.css">
-	<style>
-		@import url('https://fonts.cdnfonts.com/css/hard-rock');
-	</style>
+	<link rel="stylesheet" href="stylesheets/sign-home.css">
 
-	<title>Home</title>
+	<title>Home/Signup</title>
 </head>
 
 <body>
 
 	<nav class="container-nav">
 		<div class="logo">
-			<a href="/"><img src="/images/logo.jpg" alt="logo"></a>
+			<a href="/">
+				<p>Band Mate</p>
+			</a>
 		</div>
 		<div>
 			<ul class="list">
 				<li><a href="#">Sobre</a></li>
-				<li><a href="/signup">Cadastrar</a></li>
-				<li><a href="/login">Entrar</a></li>
+				{{#unless username}}
+				<li><a href="/">Cadastrar</a></li>
+				<li><a href="/login">Login</a></li>
+                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+				{{/unless}}
+				{{#if username}}
 				<li><a href="/logout">Sair</a></li>
+				{{/if}}
 			</ul>
 		</div>
 	</nav>
 
 	<main>
 		<section class="main-section">
-			<div class="signup">
-				<div class="signup-form">
+			<div class="sign">
+				<div class="sign-form">
 					
 					<h2>Não deixe a fama esperando.</h2>
 
-					<h2>Cadastra-se e comece sua banda hoje mesmo. </h2>
+					<h2>Cadastre-se e comece sua banda hoje mesmo. </h2>
 
 					<form action="/signup" method="POST" id="form-container">
 						<label for="username">Username</label>
 						<br>
-						<input id="username" type="text" name="username" placeholder="Roger Waters">
+						<input id="username" type="text" name="username" placeholder="Nina Simone" required>
 						<br><br>
 						<label for="password">Password</label>
 						<br>
-						<input id="password" type="password" name="password" placeholder="********">
+						<input id="password" type="password" name="password" placeholder="********" required>
 
 						{{#if message}}
 						<div class="error-message">{{ message }}</div>
 						{{/if}}
 						<br><br>
 
-						<div class="signup-button-and-login">
-							<button class="signup-button" type="submit">
+						<div class="sign-button-and-login">
+							<button class="sign-button" type="submit">
 								<p>Criar conta</p>
 							</button>
 							<p class="account-message">
@@ -68,7 +71,6 @@
 			<h1 class="bandmate">Band Mate</h1>
 		</section>
 	</main>
-
 
 </body>
 

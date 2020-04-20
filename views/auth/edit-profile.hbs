@@ -1,128 +1,162 @@
-<div>
-{{#unless firstLogin}}
-<p>{{welcomeMessage}}</p>
-{{/unless}}
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Form</title>
+</head>
 
-<form action="/edit" method="POST" id='edit-form'>
-    <div>
-        <input type="hidden" value="{{_id}}" name="_id">
-    </div>
-    <div>
-        <label for="username">Nome de Usuário:</label>
-        <input type="text" value="{{username}}" name="username">
-    </div>
-    <br>
-    <div>
-        <label for="name">Nome:</label>
-        <input type="text" value="{{name}}" name="name">
-    </div>
-    <br>
-    <div>
-        <label for="lastName">Sobrenome:</label>
-        <input type="text" value="{{lastName}}" name="lastName">
-    </div>
-    <br>
-    <div>
-        <label for="age">Idade:</label>
-        <input type="text" value="{{age}}" name="age">
-    </div>
-    <br>
-    <div>
-        <label for="gender">Gênero:</label>
-        <br>
-        <input type="radio" name="gender" value="male" checked>
-        <label for="male">Homem</label><br>
-        <input type="radio" name="gender" value="female">
-        <label for="female">Mulher</label><br>
-    </div>
-    <br>
-    <div>
-        <label for="state">Estado:</label>
-        <input type="text" placeholder="São Paulo" value="{{state}}" name="state">
+<body>
+
+    <nav class="container-nav">
+        <div class="logo">
+            <a href="/">
+                <p>Band Mate</p>
+            </a>
+        </div>
+        <div>
+            <ul class="list">
+                <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
+                <li class="navbar-links"><a href="#">Sobre</a></li>
+                <li class="navbar-links"><a href="/logout">Logout</a></li>
+                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="welcome">
+        {{#unless firstLogin}}
+        <p>{{welcomeMessage}}</p>
+        {{/unless}}
     </div>
 
-    <div>
-        <label for="city">Cidade:</label>
-        <input type="text" value="{{city}}" name="city">
-    </div>
-    <br>
-    <div>
-        <label for="level">Campo de Conhecimento:</label>
-        <br>
-        <input type="checkbox" name="musicalInfluence" value=" Rock">
-        <label for="rock"> Rock</label><br>
-        <input type="checkbox" name="musicalInfluence" value=" Jazz/Blues">
-        <label for="jazz/blues"> Jazz/Blues</label><br>
-        <input type="checkbox" name="musicalInfluence" value=" MPB">
-        <label for="MPB"> MPB</label><br>
-        <input type="checkbox" name="musicalInfluence" value=" Sertanejo">
-        <label for="sertanejo"> Sertanejo</label><br>
-        <input type="checkbox" name="musicalInfluence" value=" Eletrônico">
-        <label for="eletrônico"> Eletrônico</label><br>
-        <input type="checkbox" name="musicalInfluence" value=" Clássica">
-        <label for="clássica"> Clássica</label><br>
-        <input type="checkbox" name="musicalInfluence" value=" Metal">
-        <label for="metal"> Metal</label><br>
-    </div>
-    <br>
-    <div>
-        <label for="gender">Especialidade:</label>
-        <br>
-        <input type="checkbox" value=" Guitarra/Violão" name="specialty">
-        <label for="Guitarra/Violão"> Guitarra/Violão</label><br>
-        <input type="checkbox" value=" Baixo" name="specialty">
-        <label for="Baixo"> Baixo</label><br>
-        <input type="checkbox" value=" Bateria" name="specialty">
-        <label for="Bateria"> Bateria</label><br>
-        <input type="checkbox" value=" Percussão" name="specialty">
-        <label for="Percussão"> Percussão</label><br>
-        <input type="checkbox" value=" Vocal" name="specialty">
-        <label for="Vocal"> Vocal</label><br>
-        <input type="checkbox" value=" Piano Bar/Teclado" name="specialty">
-        <label for="Piano Bar/Teclado"> Piano Bar/Teclado</label><br>
-        <input type="checkbox" value=" Violino" name="specialty">
-        <label for="Violino"> Violino</label><br>
-        <input type="checkbox" value=" Saxofone" name="specialty">
-        <label for="Saxofone"> Saxofone</label><br>
-        <input type="checkbox" value=" Flauta" name="specialty">
-        <label for="Flauta"> Flauta</label><br>
-    </div>
-    <br>
-    <label for="level">Nível de Conhecimento:</label>
-    <div>
-        <input type="radio" name="level" value="Iniciante" checked>
-        <label for="Iniciante">Iniciante</label><br>
-        <input type="radio" name="level" value="Intermediário">
-        <label for="Intermediário">Intermediário</label><br>
-        <input type="radio" name="level" value="Avançado">
-        <label for="Avançado">Avançado</label><br>
-        <input type="radio" name="level" value="Profissional">
-        <label for="Profissional">Profissional</label><br>
-    </div>
-    <br>
-    <div>
-        <textarea name="bio" form="edit-form" placeholder="Eu sou..."></textarea>
-    </div>
-    <br>
-    <div>
-        <label for="facebook">Facebook:</label>
-        <input type="text" value="{{facebook}}" name="facebook">
-    </div>
-    <br>
-    <div>
-        <label for="instagram">Instagram:</label>
-        <input type="text" value="{{instagram}}" name="instagram">
-    </div>
-    <br>
-    <div>
-        <label for="email">Email:</label>
-        <input type="text" value="{{email}}" name="email">
-    </div>
-    <br>
-    <div>
-        <input type="submit" value="Save">
-    </div>
-</form>
-<a href="/profile"><button>Cancel</button></a>
+    <section>
+        <div class="form-container">
+            <form action="/edit" method="POST" id='edit-form'>
+                <div>
+                    <input type="hidden" value="{{_id}}" name="_id">
+                </div>
+                <div>
+                    <label for="username">Nome de Usuário:</label>
+                    <input type="text" value="{{username}}" name="username">
+                </div>
+                <br>
+                <div>
+                    <label for="name">Nome:</label>
+                    <input type="text" value="{{name}}" name="name">
+                </div>
+                <br>
+                <div>
+                    <label for="lastName">Sobrenome:</label>
+                    <input type="text" value="{{lastName}}" name="lastName">
+                </div>
+                <br>
+                <div>
+                    <label for="age">Idade:</label>
+                    <input type="text" value="{{age}}" name="age">
+                </div>
+                <br>
+                <div>
+                    <label for="gender">Gênero:</label>
+                    <br>
+                    <input type="radio" name="gender" value="Homem" checked>
+                    <label for="male">Homem</label><br>
+                    <input type="radio" name="gender" value="Mulher">
+                    <label for="female">Mulher</label><br>
+                </div>
+                <br>
+                <div>
+                    <label for="state">Estado:</label>
+                    <input type="text" placeholder="São Paulo" value="{{state}}" name="state">
+                </div>
+
+                <div>
+                    <label for="city">Cidade:</label>
+                    <input type="text" value="{{city}}" name="city">
+                </div>
+                <br>
+                <div>
+                    <label for="level">Campo de Conhecimento:</label>
+                    <br>
+                    <input type="checkbox" name="musicalInfluence" value=" Rock">
+                    <label for="rock"> Rock</label><br>
+                    <input type="checkbox" name="musicalInfluence" value=" Jazz & Blues">
+                    <label for="jazz/blues"> Jazz & Blues</label><br>
+                    <input type="checkbox" name="musicalInfluence" value=" MPB">
+                    <label for="MPB"> MPB</label><br>
+                    <input type="checkbox" name="musicalInfluence" value=" Sertanejo">
+                    <label for="sertanejo"> Sertanejo</label><br>
+                    <input type="checkbox" name="musicalInfluence" value=" Eletrônico">
+                    <label for="eletrônico"> Eletrônico</label><br>
+                    <input type="checkbox" name="musicalInfluence" value=" Clássica">
+                    <label for="clássica"> Clássica</label><br>
+                    <input type="checkbox" name="musicalInfluence" value=" Metal">
+                    <label for="metal"> Metal</label><br>
+                </div>
+                <br>
+                <div>
+                    <label for="gender">Especialidade:</label>
+                    <br>
+                    <input type="checkbox" value=" Guitarra/Violão" name="specialty">
+                    <label for="Guitarra/Violão"> Guitarra/Violão</label><br>
+                    <input type="checkbox" value=" Baixo" name="specialty">
+                    <label for="Baixo"> Baixo</label><br>
+                    <input type="checkbox" value=" Bateria" name="specialty">
+                    <label for="Bateria"> Bateria</label><br>
+                    <input type="checkbox" value=" Percussão" name="specialty">
+                    <label for="Percussão"> Percussão</label><br>
+                    <input type="checkbox" value=" Vocal" name="specialty">
+                    <label for="Vocal"> Vocal</label><br>
+                    <input type="checkbox" value=" Piano Bar/Teclado" name="specialty">
+                    <label for="Piano Bar/Teclado"> Piano Bar/Teclado</label><br>
+                    <input type="checkbox" value=" Violino" name="specialty">
+                    <label for="Violino"> Violino</label><br>
+                    <input type="checkbox" value=" Saxofone" name="specialty">
+                    <label for="Saxofone"> Saxofone</label><br>
+                    <input type="checkbox" value=" Flauta" name="specialty">
+                    <label for="Flauta"> Flauta</label><br>
+                </div>
+                <br>
+                <label for="level">Nível de Conhecimento:</label>
+                <div>
+                    <input type="radio" name="level" value="Iniciante" checked>
+                    <label for="Iniciante">Iniciante</label><br>
+                    <input type="radio" name="level" value="Intermediário">
+                    <label for="Intermediário">Intermediário</label><br>
+                    <input type="radio" name="level" value="Avançado">
+                    <label for="Avançado">Avançado</label><br>
+                    <input type="radio" name="level" value="Profissional">
+                    <label for="Profissional">Profissional</label><br>
+                </div>
+                <br>
+                <div>
+                    <textarea name="bio" form="edit-form" placeholder="Eu sou...">{{bio}}</textarea>
+                </div>
+                <br>
+                <div>
+                    <label for="facebook">Facebook:</label>
+                    <input type="text" value="{{facebook}}" name="facebook">
+                </div>
+                <br>
+                <div>
+                    <label for="instagram">Instagram:</label>
+                    <input type="text" value="{{instagram}}" name="instagram">
+                </div>
+                <br>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="text" value="{{email}}" name="email">
+                </div>
+                <br>
+                <div>
+                    <input type="submit" value="Save">
+                </div>
+            </form>
+        </div>
+        <a href="/profile"><button>Cancel</button></a>
+    </section>
+
+</body>
+
+</html>

@@ -29,7 +29,7 @@ const userSchema = new Schema ({
     musicalInfluence: 
     {
         type: [String], 
-        num: ['Rock','Jazz/Blues','MPB','Sertanejo','Eletrônico','Clássica','Metal']
+        num: ['Rock','Jazz & Blues','MPB','Sertanejo','Eletrônico','Clássica','Metal']
     },
     lookingFor: String,
     bio: String,

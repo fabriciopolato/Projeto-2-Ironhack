@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* background-image: url(/images/stadium-concert-stage-wallpaper.jpg); */
+    /* background-image: url(/images/background-lightred.jpeg); */
+    /* background-image: url(/images/black-white.jpeg); */
+    background-image: url(/images/home-background.jpg);
+
+    background-size: cover;
+    font-family: 'Airbnb Cereal App Bold';
+}
+
+/* NAV */
+li a:hover {
+    border-bottom: black solid;
+}
+
+/* MAIN SECTION */
+.main-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sign {
+    background-color: rgba(0, 0, 0, 0.504);
+    width: 30%;
+    /* color: rgb(65,65,65); */
+    color: white;
+    margin: 40px 0 0 100px;
+    border-radius: 15px;
+}
+
+.sign-login {
+    background-color: rgba(0, 0, 0, 0.404);
+    width: 30%;
+    /* color: rgb(65,65,65); */
+    color: white;
+    margin: 40px 100px 0 0;
+    border-radius: 15px;
+}
+
+.sign-form {
+    margin: 55px;
+    margin-bottom: 15px;
+}
+
+.sign-form a {
+    text-decoration: none;
+}
+
+.sign-form h2 {
+    margin-bottom: 20px;
+}
+
+.sign-form button {
+    font-size: 15px;
+    color: white;
+    background-color: rgb(206,42,52);
+    border: none;
+    border-radius: 5px;
+    width: 7rem;
+    height: 50px;
+}
+
+.sign-form input {
+    border-radius: 6px;
+    height: 40px;
+    font-size: 1.3rem;
+    background-color: rgb(236, 226, 226);
+}
+
+.sign-form p {
+    margin-bottom: 0;
+}
+
+.sign-button-and-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bandmate {
+    margin-right:7%;
+    /* margin-top: 10%; */
+    margin-bottom: 22%;
+    font-size: 10rem;
+    color: black;
+    font-family: 'HARD ROCK', sans-serif;
+}
+
+.bandmate-login {
+    margin-left:7%;
+    margin-bottom: 15%;
+    font-size: 10rem;
+    color: black;
+    font-family: 'HARD ROCK', sans-serif;
+}

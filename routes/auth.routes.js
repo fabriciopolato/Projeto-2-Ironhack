@@ -7,7 +7,7 @@ const Picture = require("../models/picture");
 const passport = require("passport");
 
 router.get("/signup", (req, res, next) => {
-  res.render("signup");
+  res.render("home");
 });
 
 router.post("/signup", (req, res, next) => {
@@ -15,14 +15,14 @@ router.post("/signup", (req, res, next) => {
   const password = req.body.password;
 
   if (username === "" || password === "") {
-    res.render("signup", { message: "Indicate username and password" });
+    res.render("home", { message: "Coloque um nome de usuário e um password" });
     return;
   }
 
   User.findOne({ username })
     .then((user) => {
       if (user !== null) {
-        res.render("signup", { message: "The username already exists" });
+        res.render("home", { message: "Este nome de usuário já existe" });
         return;
       }
 
@@ -48,7 +48,7 @@ router.post("/signup", (req, res, next) => {
 
       newUser.save((err) => {
         if (err) {
-          res.render("signup", { message: "Something went wrong" });
+          res.render("home", { message: "Desculpe, algo deu errado!" });
         } else {
           res.redirect("/profile");
         }
