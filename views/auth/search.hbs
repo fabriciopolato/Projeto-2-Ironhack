@@ -30,21 +30,21 @@
         <div class="form-content">
             <div class="top-row">
                 <div>
-                    <label>Nome de Usuário</label>
+                    <label class="title">Nome de Usuário</label>
                     <br>
                     <input type="text" name="username">
                 </div>
                 <br>
                 <div class="city-state-box">
-                    <label>Estado:</label>
+                    <label class="title">Estado:</label>
                     <input type="text" name="state">
                     <br>
-                    <label>Cidade:</label>
+                    <label class="title">Cidade:</label>
                     <input type="text" name="city">
                 </div>
                 <br>
                 <div class="gender-box">
-                    <label for="gender">Gênero</label>
+                    <label class="title" for="gender">Gênero</label>
                     <br>
                     <select id="gender" name="gender">
                         <option value="both">Ambos</option>
@@ -56,7 +56,7 @@
             <br>
             <div class="checkboxes">
                 <div class="musical-box-and-label">
-                    <label>Campo de Conhecimento:</label>
+                    <label class="title">Campo de Conhecimento:</label>
                     <div class="musical-influence-box">
                         <div>
                             <input type="checkbox" value=" Rock" name="musicalInfluence">
@@ -83,7 +83,7 @@
                 <br>
                 <br>
                 <div class="specialty-box-label">
-                    <label>Especialidade:</label>
+                    <label class="title">Especialidade:</label>
                     <div class="specialty-box">
                         <div>
                             <input type="checkbox" value=" Guitarra/Violão" name="specialty">
@@ -110,7 +110,7 @@
                 <br>
                 <div class="level-box-label">
                     <div class="level-box">
-                        <label>Nível de Conhecimento:</label>
+                        <label class="title">Nível de Conhecimento:</label>
                         <div>
                             <input type="checkbox" name="level" value='Iniciante'>
                             <label> Iniciante</label><br>
@@ -132,9 +132,35 @@
     </form>
 
     {{#each users}}
-    <div>
-        <a href="/profile/{{_id}}">{{this.username}} {{this.gender}}</a>
+    <div class="profile-card">
+        
+        <div class="profile-photo">
+            <a href="/profile/{{_id}}"><img src="{{this.imgPath}}" alt="profile photo"></a>
+        </div>
+
+        <div class="info-card">
+            <div class="name-lastname">
+                <a href="/profile/{{_id}}">{{this.name}} {{this.lastName}}</a>
+                <br>
+                <a id="username-link" href="/profile/{{_id}}">{{this.username}}</a>
+            </div>
+            <div class="specialty-level">
+                <br>
+                <p>{{this.specialty}}</p>
+                <p>{{this.level}}</p>
+                <br>
+            </div>
+            <div class="musical-influence">
+                <ul>
+                    {{#each this.musicalInfluence}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+
     </div>
+
     {{/each}}
 
 </body>
