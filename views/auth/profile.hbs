@@ -1,160 +1,105 @@
-PROFILE
-<a href="/logout"><button>Logout</button></a>
-<a href="/search"><button>Search</button></a>
-{{#unless username}}
-<a href="/delete"><button>Deletar Conta</button></a>
-<a href="/edit"><button>Edit</button></a>
-{{/unless}}
+<!DOCTYPE html>
+<html lang="en">
 
-<h1>{{username}}</h1>
-<h1>{{state}}</h1>
-<h1>{{city}}</h1>
-<h1>{{specialty}}</h1>
-<h1>{{musicalInfluence}}</h1>
-<h1>{{level}}</h1>
-<h1>{{bio}}</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/profile.css">
+    <title>Profile</title>
+</head>
 
+<body>
 
-<div class="container emp-profile">
-    <form method="post">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-img">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/1/19/Bruce_Wayne_%28The_Dark_Knight_Trilogy%29.jpg"
-                        alt="" />
-                    <div class="file btn btn-lg btn-primary">
-                        Change Photo
-                        <input type="file" name="file" />
+    <nav class="container-nav">
+        <div class="logo">
+            <a href="/">
+                <p>Band Mate</p>
+            </a>
+        </div>
+        <div>
+            <ul class="list">
+                <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
+                <li class="navbar-links"><a href="#">Sobre</a></li>
+                <li class="navbar-links"><a href="/logout">Logout</a></li>
+                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <div class="profile-container">
+            <div class="left-side">
+                <div class="name">
+                    <h1>{{user.name}} {{user.lastName}}</h1>
+                    <h4>{{user.username}}</h4>
+                </div>
+                <div class="bio">
+                    <p>{{user.bio}}</p>
+                </div>
+                <div class="invitation-button-border">
+                    <div class="invitation">
+                        <a href="#">Convidar</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="profile-head">
-                    <h5>
-                        Bruce Wayne
-                    </h5>
-                    <h6>
-                        Professional Guitarist
-                    </h6>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                aria-controls="home" aria-selected="true">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                aria-controls="profile" aria-selected="false">Timeline</a>
-                        </li>
-                    </ul>
+
+            <div class="center">
+                <div>
+                    <img src="{{user.imgPath}}" alt="profile photo">
+                </div>
+                <form action="/profile" method="POST" enctype="multipart/form-data">
+                    <div class="photo-button-border">
+                        <label for="photo">Mudar Foto</label>
+                        <input type="file" name="photo" id="photo">
+                        <input type="submit" value="Salvar">
+                    </div>
+                </form>
+            </div>
+
+            <div class="right-side">
+                <div class="profile">
+                    <div class="profile-edit">
+                        <h1>Perfil </h1>
+                        {{#if user}}
+                        <a href="/edit">
+                            <p><i class="fas fa-edit fa-lg" id="edit-icon"></i></p>
+                        </a>
+                        {{/if}}
+                    </div>
+                    <h4 class="specialty-level">{{user.specialty}} ({{user.level}})</h4>
+                    <p>{{user.city}} / {{user.state}}</p>
+                    <p>{{user.musicalInfluence}}</p>
+                </div>
+                <div class="personal-info">
+                    <h1>Informações Pessoais</h1>
+                    <p>{{user.facebook}}</p>
+                    <p>{{user.instagram}}</p>
+                    <p>{{user.email}}</p>
+                    {{#if user.age}}
+                    <p>{{user.age}} anos</p>
+                    {{/if}}
+                    <p>{{user.gender}}</p>
                 </div>
             </div>
-            <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+            <div class="invitation-card">
+                <h1>Convites</h1>
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <p>6</p>
+                <p>7</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-work">
-                    <p>About Me</p>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>User Id</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Bruce_Wayne123</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Name</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Bruce Wayne</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Email</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>darkknight@wayneenterprises.com</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Phone</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>0800-BAT</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Specialty</label>
-                            </div> Guitarist
-                            <div class="col-md-6">
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Skills</label>
-                            </div>Level
-                            <div class="col-md-6">
-                                <p>Professional</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Genre</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Metal</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Influences</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Iron Maiden, Metallica, Slayer</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Main Rig</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Fender Stratocaster, ESP Snakebyte, Marshall JCM 800</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Studio</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Yes</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>One Song</label><br />
-                                <p>The Trooper</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    </section>
+
+    <footer>
+        <div>
+            
         </div>
-    </form>
-</div>
+    </footer>
 
+</body>
 
-Mensagem de Vinícius
+</html>

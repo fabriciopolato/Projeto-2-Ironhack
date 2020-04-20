@@ -1,5 +1,120 @@
+@font-face {
+  font-family: "Airbnb Cereal App Book";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Airbnb Cereal App Book"),
+    url("/fonts/airbnb-cereal-app-cufonfonts-webfont/AirbnbCerealBook.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Airbnb Cereal App Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Airbnb Cereal App Light"),
+    url("/fonts/airbnb-cereal-app-cufonfonts-webfont/AirbnbCerealLight.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Airbnb Cereal App Medium";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Airbnb Cereal App Medium"),
+    url("/fonts/airbnb-cereal-app-cufonfonts-webfont/AirbnbCerealMedium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Airbnb Cereal App Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Airbnb Cereal App Bold"),
+    url("/fonts/airbnb-cereal-app-cufonfonts-webfont/AirbnbCerealBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Airbnb Cereal App Extra Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Airbnb Cereal App Extra Bold"),
+    url("/fonts/airbnb-cereal-app-cufonfonts-webfont/AirbnbCerealExtraBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Airbnb Cereal App Black";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Airbnb Cereal App Black"),
+    url("/fonts/airbnb-cereal-app-cufonfonts-webfont/AirbnbCerealBlack.woff") format("woff");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 img {
-    margin: 0;
-    padding: 0;
-    border-radius: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+i {
+  color: white;
+}
+
+/* NAVBAR */
+.container-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0 10px 0;
+  background-color: rgba(21, 34, 53);
+  align-items: center;
+  font-size: 1.2rem;
+  z-index: 99;
+}
+
+#profile-icon {
+  margin-right: 40px;
+}
+
+.list {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style-type: none;
+  align-items: center;
+}
+
+li {
+  margin-left: 30px;
+}
+li a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+li a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+}
+
+.logo p {
+  color: white;
+  font-family: 'HARD ROCK', sans-serif;
+  font-size: 2rem;
+  margin: 0;
+  margin-left: 40px;
+  padding: 0;
+  text-decoration: none;
+  padding-top: 4px;
+}
+
+.logo a:hover {
+  text-decoration: none;
 }

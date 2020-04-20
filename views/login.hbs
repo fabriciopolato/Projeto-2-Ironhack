@@ -1,18 +1,79 @@
-<h2>Login</h2>
-<form action="/login" method="POST">
-  <div>
-    <label for="username">Username:</label>
-    <input type="text" name="username">
-  </div>
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" name="password">
-  </div>
-  <div>
-    <input type="submit" value="Log In">
-  </div>
-  <p class="account-message">
-    Ainda não tem uma conta?
-    <a href="/signup">Sign Up</a>
-  </p>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="stylesheets/sign-home.css">
+
+	<title>Log In</title>
+</head>
+
+<body>
+
+	<nav class="container-nav">
+		<div class="logo">
+			<a href="/">
+				<p>Band Mate</p>
+			</a>
+		</div>
+		<div>
+			<ul class="list">
+				<li class="navbar-links"><a href="#">Sobre</a></li>
+				{{#unless username}}
+				<li class="navbar-links"><a href="/">Cadastrar</a></li>
+				<li class="navbar-links"><a href="/login">Login</a></li>
+                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+				{{/unless}}
+				{{#if username}}
+				<li class="navbar-links"><a href="/logout">Sair</a></li>
+				{{/if}}
+
+			</ul>
+		</div>
+	</nav>
+
+	<main>
+		<section class="main-section">
+			<h1 class="bandmate-login">Band Mate</h1>
+			<div class="sign-login">
+				<div class="sign-form">
+
+					<h2>Olá! Os vizinhos já estavam sentindo a sua falta.</h2>
+
+					<h2>Preparado para a sua próxima turnê?</h2>
+
+					<form action="/login" method="POST" id="form-container">
+						<label for="username">Username</label>
+						<br>
+						<input id="username" type="text" name="username" placeholder="Roger Waters" required>
+						<br><br>
+						<label for="password">Password</label>
+						<br>
+						<input id="password" type="password" name="password" placeholder="********" required>
+
+						{{#if message}}
+						<div class="error-message">{{ message }}</div>
+						{{/if}}
+						<br><br>
+
+						<div class="sign-button-and-login">
+							<button class="sign-button" type="submit">
+								<p>Entrar</p>
+							</button>
+							<p class="account-message">
+								Ainda não tem uma conta?
+								<br>
+								<a href="/">Cadastre-se</a>
+							</p>
+						</div>
+						<br>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>

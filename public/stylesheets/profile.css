@@ -1,0 +1,174 @@
+/* footer {
+    background-image: url(/images/stadium-concert-stage-wallpaper.jpg);
+    background-size: cover;
+} */
+* {
+    font-family: "Airbnb Cereal App Medium";
+    color: rgb(21,34,53);
+}
+
+.container-nav {
+    background-color: rgb(21,34,53);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.navbar-links a:hover {
+    color: white;
+    border-bottom: firebrick solid;
+}
+
+.profile-container {
+    margin: 30px 0 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    width: 25vw;
+    margin-top: 60px;
+    margin-left: 1vw;
+}
+
+.left-side .name h4 {
+    color: firebrick;
+}
+
+.invitation-button-border {
+    border: solid rgb(21,34,53);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6.8vw;
+    height: 2.8vw;
+    border-radius: 2px;
+    margin: 3px;
+    margin-right: 0;
+}
+
+.invitation-button-border:hover {
+    background-color: rgb(21,34,53);
+}
+
+.invitation {
+    line-height: 2vw;
+    font-family: "Airbnb Cereal App Medium";
+    color: white;
+    text-align: center;
+    border-radius: 2px;
+    margin: 0;
+    width: 6vw;
+    height: 2vw;
+    background-color: rgb(21,34,53);
+}
+
+.invitation a {
+    color: white;
+    text-decoration: none;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 20vw;
+    margin-top: 60px;
+    position: fixed;
+    top: 30;
+    right: 47.5vw;
+    z-index: 1;
+}
+
+.center img {
+    /* height: 30vw; */
+    width: 20rem;
+    border: solid rgb(21,34,53);
+}
+
+.photo-button-border {
+    border: solid rgb(21,34,53);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7.8vw;
+    height: 2.8vw;
+    border-radius: 2px;
+    margin: 3px;
+    margin-right: 0;
+    background-color: rgb(21,34,53);
+}
+
+/* .photo-button-border:hover {
+} */
+
+.center label {
+    line-height: 2vw;
+    font-family: "Airbnb Cereal App Medium";
+    color: white;
+    text-align: center;
+    border-radius: 2px;
+    margin: 0;
+    width: 7vw;
+    height: 2vw;
+    background-color: rgb(21,34,53);
+}
+
+.center label:hover {
+    cursor: pointer;
+}
+.center #photo {
+    width: 0;
+    height: 0;
+}
+
+.right-side {
+    text-align: left;
+    width: 20vw;
+    margin-top: 60px;
+    position: fixed;
+    top: 30;
+    right: 24vw;
+    z-index: 1;
+}
+
+.right-side .specialty-level {
+    color: firebrick;
+}
+
+#edit-icon {
+    color: rgb(21,34,53);
+    margin-left: 10px;
+}
+
+.profile-edit {
+    display: flex;
+    flex-direction: row;
+}
+
+.invitation-card {
+    color: rgb(21,34,53);
+    border-radius: 5px;
+    width: 20vw;
+    margin-top: 60px;
+    position: fixed;
+    top: 30;
+    right: 1vw;
+}
+.invitation-card h1 {
+    text-align: center;
+}

@@ -1,71 +1,142 @@
-SEARCH
-<a href="/profile"><button>My Profile</button></a>
+<!DOCTYPE html>
+<html lang="en">
 
-<form action="/search" method="POST">
-    <div>
-        <label for="username">Nome de Usuário:</label>
-        <input type="text" name="username">
-    </div>
-    <br>
-    <div>
-        <label for="gender">Gênero:</label>
-        <select id="gender" name="gender">
-            <option value="both">Ambos</option>
-            <option value="male">Homem</option>
-            <option value="female">Mulher</option>
-        </select>
-    </div>
-    <br>
-    <div>
-        <label for="state">Estado:</label>
-        <input type="text" name="state">
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/search.css">
+    <title>Search</title>
+</head>
 
-    <div>
-        <label for="city">Cidade:</label>
-        <input type="text" name="city">
-    </div>
-    <br>
-    <div>
-        <input type="checkbox" value="Rock" name="musicalInfluence">
-        <label for="rock"> Rock</label><br>
-        <input type="checkbox" value="Jazz/Blues" name="musicalInfluence">
-        <label for="jazz/blues"> Jazz/Blues</label><br>
-        <input type="checkbox" value="MPB" name="musicalInfluence">
-        <label for="MPB"> MPB</label><br>
-        <input type="checkbox" value="Sertanejo" name="musicalInfluence">
-        <label for="sertanejo"> Sertanejo</label><br>
-        <input type="checkbox" value="Eletrônico" name="musicalInfluence">
-        <label for="eletrônico"> Eletrônico</label><br>
-        <input type="checkbox" value="Clássica" name="musicalInfluence">
-        <label for="clássica"> Clássica</label><br>
-        <input type="checkbox" value="Metal" name="musicalInfluence">
-        <label for="metal"> Metal</label><br>
-    </div>
-    <br>
-    <div>
-        <label for="specialty">Especialidade:</label>
-        <input type="text" name="specialty">
-    </div>
-    <br>
-    <div>
-        <input type="checkbox" name="level" value='Iniciante'>
-        <label for="basic"> Iniciante</label><br>
-        <input type="checkbox" name="level" value="Intermediário">
-        <label for="intermediate"> Intermediário</label><br>
-        <input type="checkbox" name="level" value="Avançado">
-        <label for="advanced"> Avançado</label><br>
-        <input type="checkbox" name="level" value="Profissional">
-        <label for="professional"> Profissional</label><br>
-    </div>
-    <br>
-    <div>
-        <input type="submit" value="Search">
-    </div>
-</form>
+<body>
 
-{{#each users}}
-<div>
-    <a href="/profile/{{_id}}">{{this.username}} {{this.gender}}</a>
-</div>
-{{/each}}
+    <nav class="container-nav">
+        <div class="logo">
+            <a href="/">
+                <p>Band Mate</p>
+            </a>
+        </div>
+        <div>
+            <ul class="list">
+                <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
+                <li class="navbar-links"><a href="#">Sobre</a></li>
+                <li class="navbar-links"><a href="/logout">Logout</a></li>
+                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <form action="/search" method="POST">
+        <div class="form-content">
+            <div class="top-row">
+                <div>
+                    <label>Nome de Usuário</label>
+                    <br>
+                    <input type="text" name="username">
+                </div>
+                <br>
+                <div class="city-state-box">
+                    <label>Estado:</label>
+                    <input type="text" name="state">
+                    <br>
+                    <label>Cidade:</label>
+                    <input type="text" name="city">
+                </div>
+                <br>
+                <div class="gender-box">
+                    <label for="gender">Gênero</label>
+                    <br>
+                    <select id="gender" name="gender">
+                        <option value="both">Ambos</option>
+                        <option value="male">Homem</option>
+                        <option value="female">Mulher</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="checkboxes">
+                <div class="musical-box-and-label">
+                    <label>Campo de Conhecimento:</label>
+                    <div class="musical-influence-box">
+                        <div>
+                            <input type="checkbox" value=" Rock" name="musicalInfluence">
+                            <label> Rock</label><br>
+                            <input type="checkbox" value=" Jazz & Blues" name="musicalInfluence">
+                            <label> Jazz & Blues</label><br>
+                            <input type="checkbox" value=" Samba" name="musicalInfluence">
+                            <label> Samba</label><br>
+                            <input type="checkbox" value=" MPB" name="musicalInfluence">
+                            <label> MPB</label><br>
+                        </div>
+                        <div class="musical-second-col">
+                            <input type="checkbox" value=" Sertanejo" name="musicalInfluence">
+                            <label> Sertanejo</label><br>
+                            <input type="checkbox" value=" Eletrônico" name="musicalInfluence">
+                            <label> Eletrônico</label><br>
+                            <input type="checkbox" value=" Clássica" name="musicalInfluence">
+                            <label> Clássica</label><br>
+                            <input type="checkbox" value=" Metal" name="musicalInfluence">
+                            <label> Metal</label><br>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="specialty-box-label">
+                    <label>Especialidade:</label>
+                    <div class="specialty-box">
+                        <div>
+                            <input type="checkbox" value=" Guitarra/Violão" name="specialty">
+                            <label> Guitarra/Violão</label><br>
+                            <input type="checkbox" value=" Baixo" name="specialty">
+                            <label> Baixo</label><br>
+                            <input type="checkbox" value=" Bateria" name="specialty">
+                            <label> Bateria</label><br>
+                            <input type="checkbox" value=" Percussão" name="specialty">
+                            <label> Percussão</label><br>
+                        </div>
+                        <div class="specialty-second-col">
+                            <input type="checkbox" value=" Vocal" name="specialty">
+                            <label> Vocal</label><br>
+                            <input type="checkbox" value=" Piano Bar/Teclado" name="specialty">
+                            <label> Piano Bar/Teclado</label><br>
+                            <input type="checkbox" value=" Violino" name="specialty">
+                            <label> Violino</label><br>
+                            <input type="checkbox" value=" Saxofone" name="specialty">
+                            <label> Saxofone</label><br>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="level-box-label">
+                    <div class="level-box">
+                        <label>Nível de Conhecimento:</label>
+                        <div>
+                            <input type="checkbox" name="level" value='Iniciante'>
+                            <label> Iniciante</label><br>
+                            <input type="checkbox" name="level" value="Intermediário">
+                            <label> Intermediário</label><br>
+                            <input type="checkbox" name="level" value="Avançado">
+                            <label> Avançado</label><br>
+                            <input type="checkbox" name="level" value="Profissional">
+                            <label> Profissional</label><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <input id="search-button" type="submit" value="Search">
+            </div>
+        </div>
+    </form>
+
+    {{#each users}}
+    <div>
+        <a href="/profile/{{_id}}">{{this.username}} {{this.gender}}</a>
+    </div>
+    {{/each}}
+
+</body>
+
+</html>
