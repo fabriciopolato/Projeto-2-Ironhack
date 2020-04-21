@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/edit-profile.css">
     <title>Edit Form</title>
 </head>
 
@@ -25,136 +26,152 @@
         </div>
     </nav>
 
+    {{#unless firstLogin}}
     <div class="welcome">
-        {{#unless firstLogin}}
         <p>{{welcomeMessage}}</p>
-        {{/unless}}
     </div>
+    {{/unless}}
 
     <section>
-        <div class="form-container">
-            <form action="/edit" method="POST" id='edit-form'>
-                <div>
-                    <input type="hidden" value="{{_id}}" name="_id">
-                </div>
-                <div>
-                    <label>Nome de Usuário:</label>
-                    <input type="text" value="{{username}}" name="username">
-                </div>
-                <br>
-                <div>
-                    <label>Nome:</label>
-                    <input type="text" value="{{name}}" name="name">
-                </div>
-                <br>
-                <div>
-                    <label>Sobrenome:</label>
-                    <input type="text" value="{{lastName}}" name="lastName">
-                </div>
-                <br>
-                <div>
-                    <label>Idade:</label>
-                    <input type="text" value="{{age}}" name="age">
-                </div>
-                <br>
-                <div>
-                    <label>Gênero:</label>
+        <form action="/edit" method="POST" id='edit-form'>
+            <div class="form-container">
+                <div class="row-1">
+                    <div class="column-1 right-align margin-right">
+                        <div>
+                            <input type="hidden" value="{{_id}}" name="_id">
+                        </div>
+                        <div>
+                            <label>Nome de Usuário:</label>
+                            <input type="text" value="{{username}}" name="username">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Nome:</label>
+                            <input type="text" value="{{name}}" name="name">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Sobrenome:</label>
+                            <input type="text" value="{{lastName}}" name="lastName">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Idade:</label>
+                            <input type="text" value="{{age}}" name="age">
+                        </div>
+                    </div>
                     <br>
-                    <input type="radio" name="gender" value="Homem" checked>
-                    <label for="male">Homem</label><br>
-                    <input type="radio" name="gender" value="Mulher">
-                    <label for="female">Mulher</label><br>
-                </div>
-                <br>
-                <div>
-                    <label>Estado:</label>
-                    <input type="text" placeholder="São Paulo" value="{{state}}" name="state">
-                </div>
-
-                <div>
-                    <label>Cidade:</label>
-                    <input type="text" value="{{city}}" name="city">
-                </div>
-                <br>
-                <div>
-                    <label>Campo de Conhecimento:</label>
+                    <div class="column-2 right-align margin-right">
+                        <div>
+                            <label>Estado:</label>
+                            <input type="text" placeholder="São Paulo" value="{{state}}" name="state">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Cidade:</label>
+                            <input type="text" value="{{city}}" name="city">
+                        </div>
+                        <br>
+                        <div>
+                            <input type="radio" name="gender" value="Homem" checked>
+                            <label for="male">Homem</label><br><br>
+                            <input type="radio" name="gender" value="Mulher">
+                            <label for="female">Mulher</label><br><br>
+                        </div>
+                    </div>
                     <br>
-                    <input type="checkbox" name="musicalInfluence" value=" Rock">
-                    <label> Rock</label><br>
-                    <input type="checkbox" name="musicalInfluence" value=" Jazz & Blues">
-                    <label> Jazz & Blues</label><br>
-                    <input type="checkbox" name="musicalInfluence" value=" Samba">
-                    <label> Samba</label><br>
-                    <input type="checkbox" name="musicalInfluence" value=" MPB">
-                    <label> MPB</label><br>
-                    <input type="checkbox" name="musicalInfluence" value=" Sertanejo">
-                    <label> Sertanejo</label><br>
-                    <input type="checkbox" name="musicalInfluence" value=" Eletrônico">
-                    <label> Eletrônico</label><br>
-                    <input type="checkbox" name="musicalInfluence" value=" Clássica">
-                    <label> Clássica</label><br>
-                    <input type="checkbox" name="musicalInfluence" value=" Metal">
-                    <label> Metal</label><br>
-                </div>
-                <br>
-                <div>
-                    <label>Especialidade:</label>
+                    <div class="column-3 margin-right">
+                        <label>Campo de Conhecimento:</label>
+                        <div>
+                            <input type="checkbox" name="musicalInfluence" value=" Rock">
+                            <label> Rock</label><br>
+                            <input type="checkbox" name="musicalInfluence" value=" Jazz & Blues">
+                            <label> Jazz & Blues</label><br>
+                            <input type="checkbox" name="musicalInfluence" value=" Samba">
+                            <label> Samba</label><br>
+                            <input type="checkbox" name="musicalInfluence" value=" MPB">
+                            <label> MPB</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="musicalInfluence" value=" Sertanejo">
+                            <label> Sertanejo</label><br>
+                            <input type="checkbox" name="musicalInfluence" value=" Eletrônico">
+                            <label> Eletrônico</label><br>
+                            <input type="checkbox" name="musicalInfluence" value=" Clássica">
+                            <label> Clássica</label><br>
+                            <input type="checkbox" name="musicalInfluence" value=" Metal">
+                            <label> Metal</label><br>
+                        </div>
+                    </div>
                     <br>
-                    <input type="checkbox" value=" Guitarra/Violão" name="specialty">
-                    <label> Guitarra/Violão</label><br>
-                    <input type="checkbox" value=" Baixo" name="specialty">
-                    <label> Baixo</label><br>
-                    <input type="checkbox" value=" Bateria" name="specialty">
-                    <label> Bateria</label><br>
-                    <input type="checkbox" value=" Percussão" name="specialty">
-                    <label> Percussão</label><br>
-                    <input type="checkbox" value=" Vocal" name="specialty">
-                    <label> Vocal</label><br>
-                    <input type="checkbox" value=" Piano Bar/Teclado" name="specialty">
-                    <label> Piano Bar/Teclado</label><br>
-                    <input type="checkbox" value=" Violino" name="specialty">
-                    <label> Violino</label><br>
-                    <input type="checkbox" value=" Saxofone" name="specialty">
-                    <label> Saxofone</label><br>
+                    <div class="column-4">
+                        <label>Especialidade:</label>
+                        <br>
+                        <div>
+                            <input type="checkbox" value=" Guitarra/Violão" name="specialty">
+                            <label> Guitarra/Violão</label><br>
+                            <input type="checkbox" value=" Baixo" name="specialty">
+                            <label> Baixo</label><br>
+                            <input type="checkbox" value=" Bateria" name="specialty">
+                            <label> Bateria</label><br>
+                            <input type="checkbox" value=" Percussão" name="specialty">
+                            <label> Percussão</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" value=" Vocal" name="specialty">
+                            <label> Vocal</label><br>
+                            <input type="checkbox" value=" Piano Bar/Teclado" name="specialty">
+                            <label> Piano Bar/Teclado</label><br>
+                            <input type="checkbox" value=" Violino" name="specialty">
+                            <label> Violino</label><br>
+                            <input type="checkbox" value=" Saxofone" name="specialty">
+                            <label> Saxofone</label><br>
+                        </div>
+                    </div>
                 </div>
                 <br>
-                <label>Nível de Conhecimento:</label>
-                <div>
-                    <input type="radio" name="level" value="Iniciante" checked>
-                    <label>Iniciante</label><br>
-                    <input type="radio" name="level" value="Intermediário">
-                    <label>Intermediário</label><br>
-                    <input type="radio" name="level" value="Avançado">
-                    <label>Avançado</label><br>
-                    <input type="radio" name="level" value="Profissional">
-                    <label>Profissional</label><br>
+                <div class="row-2">
+                    <div class="col-1-row-2 margin-right">
+                        <label>Nível de Conhecimento:</label>
+                        <br>
+                        <input type="radio" name="level" value="Iniciante" checked>
+                        <label>Iniciante</label><br>
+                        <input type="radio" name="level" value="Intermediário">
+                        <label>Intermediário</label><br>
+                        <input type="radio" name="level" value="Avançado">
+                        <label>Avançado</label><br>
+                        <input type="radio" name="level" value="Profissional">
+                        <label>Profissional</label><br>
+                    </div>
+                    <br>
+                    <div>
+                        <textarea name="bio" form="edit-form" placeholder="Eu sou...">{{bio}}</textarea>
+                    </div>
+                    <br>
+                    <div class="social-box right-align">
+                        <div>
+                            <label>Facebook:</label>
+                            <input type="text" value="{{facebook}}" name="facebook">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Instagram:</label>
+                            <input type="text" value="{{instagram}}" name="instagram">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Email:</label>
+                            <input type="text" value="{{email}}" name="email">
+                        </div>
+                        <br>
+                    </div>
                 </div>
-                <br>
-                <div>
-                    <textarea name="bio" form="edit-form" placeholder="Eu sou...">{{bio}}</textarea>
-                </div>
-                <br>
-                <div>
-                    <label>Facebook:</label>
-                    <input type="text" value="{{facebook}}" name="facebook">
-                </div>
-                <br>
-                <div>
-                    <label>Instagram:</label>
-                    <input type="text" value="{{instagram}}" name="instagram">
-                </div>
-                <br>
-                <div>
-                    <label>Email:</label>
-                    <input type="text" value="{{email}}" name="email">
-                </div>
-                <br>
-                <div>
-                    <input type="submit" value="Save">
-                </div>
-            </form>
-        </div>
-        <a href="/profile"><button>Cancel</button></a>
+            </div>
+            <div>
+                <input type="submit" value="Save">
+                <a href="/profile"><button>Cancel</button></a>
+            </div>
+        </form>
     </section>
 
 </body>

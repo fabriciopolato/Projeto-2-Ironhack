@@ -7,6 +7,8 @@ const User = require("../models/user");
 const nodemailer = require("nodemailer");
 const multer = require("multer");
 const Picture = require("../models/picture");
+const uploadCloud = require("../config/cloudinary.js");
+const upload = multer({ dest: "./public/uploads/" });
 
 router.get("/", (req, res, next) => {
   res.render("home");
@@ -27,43 +29,32 @@ router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-const upload = multer({ dest: "./public/uploads/" });
-
-router.post("/profile", upload.single("photo"), (req, res) => {
+router.post("/profile", uploadCloud.single("photo"), (req, res) => {
   const user = req.user;
-  const pic = new Picture({
-    name: req.body.namePhoto,
 
-    path: `/uploads/${req.file.filename}`,
-    originalName: req.file.originalname,
-  });
-  console.log('****************', pic)
+  const path = req.file.url;
 
   User.findByIdAndUpdate(
     user._id,
     {
       $set: {
-        imgPath: pic.path,
+        imgPath: path,
+        originalName: req.file.originalname
       },
     },
     {
       new: true,
     }
   )
-    .then((user) => console.log('Photo added'))
+  .then((user) => res.redirect("/profile"))
     .catch((err) => console.log(err));
-
-  Picture.collection.drop();
-  pic.save((err) => {
-    res.redirect("/profile");
-  });
 });
 
 router.get("/profile/:id", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const { id } = req.params;
   User.find({ _id: id })
     .then((user) => {
-      res.render("auth/profile", user[0]);
+      res.render("auth/others-profile", user[0]);
     })
     .catch((err) => console.log(err));
 });
@@ -98,44 +89,64 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   if (musicalInfluence) {
     if (level) {
       query = {
-        $and: [
-          { username: { $regex: username, $options: "i" } },
-          { gender: { $in: gender } },
-          { state: { $regex: state, $options: "i" } },
-          { city: { $regex: city, $options: "i" } },
-          { musicalInfluence: { $in: musicalInfluence } },
-          { level: { $in: level } },
+        $or: [
+          { name: { $regex: username, $options: "i" } },
+          {
+            $and: [
+              { username: { $regex: username, $options: "i" } },
+              { gender: { $in: gender } },
+              { state: { $regex: state, $options: "i" } },
+              { city: { $regex: city, $options: "i" } },
+              { musicalInfluence: { $in: musicalInfluence } },
+              { level: { $in: level } },
+            ],
+          },
         ],
       };
     } else {
       query = {
-        $and: [
-          { username: { $regex: username, $options: "i" } },
-          { gender: { $in: gender } },
-          { state: { $regex: state, $options: "i" } },
-          { city: { $regex: city, $options: "i" } },
-          { musicalInfluence: { $in: musicalInfluence } },
+        $or: [
+          { name: { $regex: username, $options: "i" } },
+          {
+            $and: [
+              { username: { $regex: username, $options: "i" } },
+              { gender: { $in: gender } },
+              { state: { $regex: state, $options: "i" } },
+              { city: { $regex: city, $options: "i" } },
+              { musicalInfluence: { $in: musicalInfluence } },
+            ],
+          },
         ],
       };
     }
   } else {
     if (level) {
       query = {
-        $and: [
-          { username: { $regex: username, $options: "i" } },
-          { gender: { $in: gender } },
-          { state: { $regex: state, $options: "i" } },
-          { city: { $regex: city, $options: "i" } },
-          { level: { $in: level } },
+        $or: [
+          { name: { $regex: username, $options: "i" } },
+          {
+            $and: [
+              { username: { $regex: username, $options: "i" } },
+              { gender: { $in: gender } },
+              { state: { $regex: state, $options: "i" } },
+              { city: { $regex: city, $options: "i" } },
+              { level: { $in: level } },
+            ],
+          },
         ],
       };
     } else {
       query = {
-        $and: [
-          { username: { $regex: username, $options: "i" } },
-          { gender: { $in: gender } },
-          { state: { $regex: state, $options: "i" } },
-          { city: { $regex: city, $options: "i" } },
+        $or: [
+          { name: { $regex: username, $options: "i" } },
+          {
+            $and: [
+              { username: { $regex: username, $options: "i" } },
+              { gender: { $in: gender } },
+              { state: { $regex: state, $options: "i" } },
+              { city: { $regex: city, $options: "i" } },
+            ],
+          },
         ],
       };
     }
@@ -144,7 +155,6 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   User.find(query, { password: 0 })
     .sort({ username: 1 })
     .then((users) => {
-      console.log("*************", users);
       res.render("auth/search", { users });
     })
     .catch((err) => console.log(err));
@@ -190,7 +200,7 @@ router.post("/edit", (req, res, next) => {
     instagram,
     email,
   } = req.body;
-  console.log("***************",req.body)
+  console.log("***************", req.body);
 
   User.findByIdAndUpdate(
     _id,

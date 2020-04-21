@@ -12,7 +12,7 @@ const userSchema = new Schema ({
     lastName: String,
     firstLogin: Boolean,
     welcomeMessage: String,
-    gender: [String],
+    gender: String,
     age: Number,
     state: String,
     city: String,
@@ -36,7 +36,8 @@ const userSchema = new Schema ({
     facebook: String,
     instagram: String,
     email: String,
-    imgPath: String
+    imgPath: String,
+    originalName: String
 })
 
 const User = mongoose.model('User', userSchema);
