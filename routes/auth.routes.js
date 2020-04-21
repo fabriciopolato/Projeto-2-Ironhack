@@ -3,7 +3,6 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 const User = require("../models/user");
-const Picture = require("../models/picture");
 const passport = require("passport");
 
 router.get("/signup", (req, res, next) => {
@@ -28,23 +27,14 @@ router.post("/signup", (req, res, next) => {
 
       const salt = bcrypt.genSaltSync(bcryptSalt);
       const hashPass = bcrypt.hashSync(password, salt);
-      
-      const initialPhoto = new Picture({
-        name: 'no photo',
-        path: `/images/noPhoto.png`,
-        originalName: 'no photo',
-      });
 
       const newUser = new User({
         username,
         password: hashPass,
         firstLogin: false,
         welcomeMessage: "Você está muito próximo de montar sua primeira banda de sucesso. Para que os outros integrantes da banda possam te encontrar, complete o seu cadastro!",
-        imgPath: initialPhoto.path
+        imgPath: 'images/noPhoto.png'
       });
-
-
-      initialPhoto.save()
 
       newUser.save((err) => {
         if (err) {
