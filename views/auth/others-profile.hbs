@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/others-profile.css">
+    <title>Others' Profile</title>
+</head>
+
+<body>
+
+    <nav class="container-nav">
+        <div class="logo">
+            <a href="/">
+                <p>Band Mate</p>
+            </a>
+        </div>
+        <div>
+            <ul class="list">
+                <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
+                <li class="navbar-links"><a href="#">Sobre</a></li>
+                <li class="navbar-links"><a href="/logout">Logout</a></li>
+                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <section>
+        <div class="profile-container">
+            <div class="left-side">
+                <div class="name">
+                    <h1>{{name}} {{lastName}}</h1>
+                    <h4>{{username}}</h4>
+                </div>
+                <div class="bio">
+                    <p>{{bio}}</p>
+                </div>
+                <div class="invitation-button-border">
+                    <div class="invitation">
+                        <a href="#">Convidar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center">
+                <div>
+                    <img src="{{imgPath}}" alt="profile photo">
+                </div>
+                <form action="/profile" method="POST" enctype="multipart/form-data">
+                    <div class="photo-button-border">
+                        <label for="photo">Mudar Foto</label>
+                        <input type="file" name="photo" id="photo">
+                        <input type="submit" value="Salvar">
+                    </div>
+                </form>
+            </div>
+
+            <div class="right-side">
+                <div class="profile">
+                    <div class="profile-edit">
+                        <h1>Perfil </h1>
+                        {{#if user}}
+                        <a href="/edit">
+                            <p><i class="fas fa-edit fa-lg" id="edit-icon"></i></p>
+                        </a>
+                        {{/if}}
+                    </div>
+                    <h4 class="specialty-level">{{specialty}} ({{level}})</h4>
+                    <p>{{city}} / {{state}}</p>
+                    <p>{{musicalInfluence}}</p>
+                </div>
+                <div class="personal-info">
+                    <h1>Informações Pessoais</h1>
+                    <p>{{facebook}}</p>
+                    <p>{{instagram}}</p>
+                    <p>{{email}}</p>
+                    {{#if age}}
+                    <p>{{age}} anos</p>
+                    {{/if}}
+                    <p>{{gender}}</p>
+                </div>
+            </div>
+            <div class="invitation-card">
+                <h1>Convites</h1>
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <p>6</p>
+                <p>7</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+
+        </div>
+    </footer>
+</body>
+
+</html>
