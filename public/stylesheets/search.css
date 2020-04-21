@@ -80,6 +80,13 @@ form input {
 }
 
 /* PROFILE-CARD */
+
+.cards-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
 .profile-card {
     color: black;
     display: flex;
@@ -118,3 +125,4 @@ form input {
 .musical-influence ul {
     padding-left: 1.1rem;
 }
+

@@ -22,6 +22,7 @@
                 <li class="navbar-links"><a href="#">Sobre</a></li>
                 <li class="navbar-links"><a href="/logout">Logout</a></li>
                 <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+                <li><a href="/delete">Deletar conta</a></li>
             </ul>
         </div>
     </nav>
@@ -36,11 +37,6 @@
                 </div>
                 <div class="bio">
                     <p>{{user.bio}}</p>
-                </div>
-                <div class="invitation-button-border">
-                    <div class="invitation">
-                        <a href="#">Convidar</a>
-                    </div>
                 </div>
             </div>
 
@@ -61,11 +57,9 @@
                 <div class="profile">
                     <div class="profile-edit">
                         <h1>Perfil </h1>
-                        {{#if user}}
                         <a href="/edit">
                             <p><i class="fas fa-edit fa-lg" id="edit-icon"></i></p>
                         </a>
-                        {{/if}}
                     </div>
                     <h4 class="specialty-level">{{user.specialty}} ({{user.level}})</h4>
                     <p>{{user.city}} / {{user.state}}</p>
@@ -84,13 +78,16 @@
             </div>
             <div class="invitation-card">
                 <h1>Convites</h1>
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-                <p>5</p>
-                <p>6</p>
-                <p>7</p>
+
+                {{#each users}}
+                <a href="/profile/{{_id}}">{{username}} te convidou</a>
+                <br><br>
+                <a href="/invitation-accepted/{{_id}}">Aceitar</a>
+                {{!-- <a href="/invitation-dennied/{{_id}}">Excluir</a> --}}
+                <a href="#">Excluir</a>
+                <br>
+                <br><br>
+                {{/each}}
             </div>
         </div>
     </section>

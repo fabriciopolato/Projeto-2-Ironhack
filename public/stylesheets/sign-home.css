@@ -78,6 +78,11 @@ body {
     align-items: center;
 }
 
+.sign-button:hover {
+    /* cursor: url('/public/images/cursor.png'), auto; */
+    cursor: pointer;
+}
+
 .bandmate {
     margin-right:7%;
     /* margin-top: 10%; */
