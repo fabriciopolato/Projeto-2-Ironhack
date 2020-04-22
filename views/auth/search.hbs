@@ -30,7 +30,7 @@
         <div class="form-content">
             <div class="top-row">
                 <div>
-                    <label class="title">Nome de Usuário</label>
+                    <label class="title">Nome de Usuário:</label>
                     <br>
                     <input type="text" name="username">
                 </div>
@@ -44,7 +44,7 @@
                 </div>
                 <br>
                 <div class="gender-box">
-                    <label class="title">Gênero</label>
+                    <label class="title">Sexo:</label>
                     <br>
                     <select id="gender" name="gender">
                         <option value="both">Ambos</option>
@@ -56,7 +56,7 @@
             <br>
             <div class="checkboxes">
                 <div class="musical-box-and-label">
-                    <label class="title">Campo de Conhecimento:</label>
+                    <label class="title">Gênero:</label>
                     <div class="musical-influence-box">
                         <div>
                             <input type="checkbox" value=" Rock" name="musicalInfluence">
@@ -111,7 +111,7 @@
                 <div class="level-box-label">
                     <div class="level-box">
                         <label class="title">Nível de Conhecimento:</label>
-                        <div>
+                        <div class="level-col">
                             <input type="checkbox" name="level" value='Iniciante'>
                             <label> Iniciante</label><br>
                             <input type="checkbox" name="level" value="Intermediário">
@@ -123,10 +123,27 @@
                         </div>
                     </div>
                 </div>
+                <div class="gender-box-label">
+                    <div class="gender-box">
+                    <label class="title">Buscando por:</label>
+                    <br>
+                    <select id="lookingForm" name="lookingFor">
+                        <option value="all">Todos</option>
+                        <option value=" Guitarra/Violão">Guitarra/Violão</option>
+                        <option value=" Baixo">Baixo</option>
+                        <option value=" Bateria">Bateria</option>
+                        <option value=" Percussão">Percussão</option>
+                        <option value=" Vocal">Vocal</option>
+                        <option value=" Piano Bar/Teclado">Piano Bar/Teclado</option>
+                        <option value=" Violino">Violino</option>
+                        <option value=" Saxofone">Saxofone</option>
+                    </select>
+                </div>
+                </div>
             </div>
             <br>
             <div>
-                <input id="search-button" type="submit" value="Search">
+                <input id="search-button" type="submit" value="Buscar">
             </div>
         </div>
     </form>
@@ -148,7 +165,7 @@
                 <div class="specialty-level">
                     <br>
                     <p>{{this.specialty}}</p>
-                    <p>{{this.level}}</p>
+                    <p class="level-card">{{this.level}}</p>
                     <br>
                 </div>
                 <div class="musical-influence">
