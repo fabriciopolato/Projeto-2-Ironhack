@@ -33,7 +33,7 @@ const userSchema = new Schema ({
     },
     invitationReceived: [String],
     friendship: [String],
-    // lookingFor: String,
+    lookingFor: [String],
     bio: String,
     facebook: String,
     instagram: String,

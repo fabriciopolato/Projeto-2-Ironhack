@@ -21,9 +21,9 @@ router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res, next) => {
         user.firstLogin = true;
         res.render("auth/edit-profile", user);
       } else {
-        User.find({_id: user.invitationReceived})
+        User.find({ _id: user.invitationReceived })
           .then((users) => {
-            res.render("auth/profile", {user, users});
+            res.render("auth/profile", { user, users });
           })
           .catch((err) => console.log(err));
       }
@@ -33,7 +33,6 @@ router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
 router.post("/profile", uploadCloud.single("photo"), (req, res) => {
   const user = req.user;
-
   const path = req.file.url;
 
   User.findByIdAndUpdate(
@@ -87,31 +86,29 @@ router.post("/profile/:id", ensureLogin.ensureLoggedIn(), (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-router.get('/invitation-accepted/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  let { id } = req.params;
-  let userId = '' + req.user._id;
+router.get(
+  "/invitation-accepted/:id",
+  ensureLogin.ensureLoggedIn(),
+  (req, res, next) => {
+    let { id } = req.params;
+    let userId = "" + req.user._id;
 
-  User.findByIdAndUpdate(
-    id,
-    {
-      $push: {friendship: userId},
-    }
-  )
-  .then(resp => {
-    userId = req.user._id;
-    id += '';
-    
-    User.findByIdAndUpdate(
-      userId,
-      {
-        $push: {friendship: id},
-      }
-    )
-    .then(resp => res.redirect('/profile'))
-    .catch((err) => console.log(err))
-})
-  .catch((err) => console.log(err))
-});
+    User.findByIdAndUpdate(id, {
+      $push: { friendship: userId },
+    })
+      .then((resp) => {
+        userId = req.user._id;
+        id += "";
+
+        User.findByIdAndUpdate(userId, {
+          $push: { friendship: id },
+        })
+          .then((resp) => res.redirect("/profile"))
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  }
+);
 
 router.get("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render("auth/search");
@@ -138,6 +135,26 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
     gender = [gender];
   }
 
+  let { lookingFor } = req.body;
+  const user = req.body;
+  console.log('=============== USER REQ.BODY', user)
+  console.log("***************LOOKING FOR 1", lookingFor);
+  if (lookingFor === "all") {
+    lookingFor = [
+      " Guitarra/Violão",
+      " Baixo",
+      " Bateria",
+      " Percussão",
+      " Vocal",
+      " Piano Bar/Teclado",
+      " Violino",
+      " Saxofone",
+    ];
+  } else {
+    lookingFor = [lookingFor];
+  }
+  console.log("***************LOOKING FOR 2", lookingFor);
+
   let query = {};
 
   if (musicalInfluence) {
@@ -155,6 +172,7 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
             { gender: { $in: gender } },
             { state: { $regex: state, $options: "i" } },
             { city: { $regex: city, $options: "i" } },
+            { lookingFor: { $in: lookingFor } },
             { musicalInfluence: { $in: musicalInfluence } },
             { level: { $in: level } },
             { specialty: { $in: specialty } },
@@ -173,6 +191,7 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
             { gender: { $in: gender } },
             { state: { $regex: state, $options: "i" } },
             { city: { $regex: city, $options: "i" } },
+            { lookingFor: { $in: lookingFor } },
             { musicalInfluence: { $in: musicalInfluence } },
             { level: { $in: level } },
           ],
@@ -192,6 +211,7 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
             { gender: { $in: gender } },
             { state: { $regex: state, $options: "i" } },
             { city: { $regex: city, $options: "i" } },
+            { lookingFor: { $in: lookingFor } },
             { musicalInfluence: { $in: musicalInfluence } },
             { specialty: { $in: specialty } },
           ],
@@ -209,6 +229,7 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
             { gender: { $in: gender } },
             { state: { $regex: state, $options: "i" } },
             { city: { $regex: city, $options: "i" } },
+            { lookingFor: { $in: lookingFor } },
             { musicalInfluence: { $in: musicalInfluence } },
           ],
         };
@@ -229,6 +250,7 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
             { gender: { $in: gender } },
             { state: { $regex: state, $options: "i" } },
             { city: { $regex: city, $options: "i" } },
+            { lookingFor: { $in: lookingFor } },
             { level: { $in: level } },
             { specialty: { $in: specialty } },
           ],
@@ -246,6 +268,7 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
             { gender: { $in: gender } },
             { state: { $regex: state, $options: "i" } },
             { city: { $regex: city, $options: "i" } },
+            { lookingFor: { $in: lookingFor } },
             { level: { $in: level } },
           ],
         };
@@ -264,6 +287,7 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
             { gender: { $in: gender } },
             { state: { $regex: state, $options: "i" } },
             { city: { $regex: city, $options: "i" } },
+            { lookingFor: { $in: lookingFor } },
             { specialty: { $in: specialty } },
           ],
         };
@@ -280,6 +304,7 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
             { gender: { $in: gender } },
             { state: { $regex: state, $options: "i" } },
             { city: { $regex: city, $options: "i" } },
+            { lookingFor: { $in: lookingFor } },
           ],
         };
       }
@@ -329,6 +354,7 @@ router.post("/edit", (req, res, next) => {
     specialty,
     level,
     musicalInfluence,
+    lookingFor,
     bio,
     facebook,
     instagram,
@@ -350,6 +376,7 @@ router.post("/edit", (req, res, next) => {
         specialty,
         level,
         musicalInfluence,
+        lookingFor,
         bio,
         facebook,
         instagram,
