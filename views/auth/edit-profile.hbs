@@ -26,11 +26,11 @@
         </div>
     </nav>
 
-    {{#unless firstLogin}}
+    {{#if firstLogin}}
     <div class="welcome">
         <p>{{welcomeMessage}}</p>
     </div>
-    {{/unless}}
+    {{/if}}
 
     <section>
         <form action="/edit" method="POST" id='edit-form'>
@@ -132,24 +132,24 @@
                         <label>Buscando por:</label>
                         <br>
                         <div>
-                            <input type="checkbox" value=" Guitarra/Violão" name="lookingFor">
-                            <label> Guitarra/Violão</label><br>
-                            <input type="checkbox" value=" Baixo" name="lookingFor">
-                            <label> Baixo</label><br>
-                            <input type="checkbox" value=" Bateria" name="lookingFor">
-                            <label> Bateria</label><br>
-                            <input type="checkbox" value=" Percussão" name="lookingFor">
-                            <label> Percussão</label><br>
+                            <input type="checkbox" value=" Guitarrista/Violão" name="lookingFor">
+                            <label> Guitarrista/Violão</label><br>
+                            <input type="checkbox" value=" Baixista" name="lookingFor">
+                            <label> Baixista</label><br>
+                            <input type="checkbox" value=" Baterista" name="lookingFor">
+                            <label> Baterista</label><br>
+                            <input type="checkbox" value=" Percussionista" name="lookingFor">
+                            <label> Percussionista</label><br>
                         </div>
                         <div>
-                            <input type="checkbox" value=" Vocal" name="lookingFor">
-                            <label> Vocal</label><br>
-                            <input type="checkbox" value=" Piano Bar/Teclado" name="lookingFor">
-                            <label> Piano Bar/Teclado</label><br>
-                            <input type="checkbox" value=" Violino" name="lookingFor">
-                            <label> Violino</label><br>
-                            <input type="checkbox" value=" Saxofone" name="lookingFor">
-                            <label> Saxofone</label><br>
+                            <input type="checkbox" value=" Vocalista" name="lookingFor">
+                            <label> Vocalista</label><br>
+                            <input type="checkbox" value=" Pianista/Tecladista" name="lookingFor">
+                            <label> Pianista/Tecladista</label><br>
+                            <input type="checkbox" value=" Violinista" name="lookingFor">
+                            <label> Violinista</label><br>
+                            <input type="checkbox" value=" Saxofonista" name="lookingFor">
+                            <label> Saxofonista</label><br>
                         </div>
                     </div>
                 </div>

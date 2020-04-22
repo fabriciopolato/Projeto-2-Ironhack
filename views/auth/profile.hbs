@@ -13,12 +13,12 @@
     <nav class="container-nav">
         <div class="logo">
             <a href="/">
-                <p>Band Mate</p>
+                <p>BandMate</p>
             </a>
         </div>
         <div>
             <ul class="list">
-                <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
+                <li class="navbar-links"><a href="/search">Buscar<i class="fas fa-search"></i></a></li>
                 <li class="navbar-links"><a href="#">Sobre</a></li>
                 <li class="navbar-links"><a href="/logout">Logout</a></li>
                 <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
@@ -38,6 +38,11 @@
                 <div class="bio">
                     <p>{{user.bio}}</p>
                 </div>
+                {{#each friends}}
+                <div class="friends">
+                    <a href="/delete-friend/{{this._id}}">Excluir </a><a href="/profile/{{this._id}}">{{this.username}}</a>
+                </div>
+                {{/each}}
             </div>
 
             <div class="center">
@@ -58,7 +63,7 @@
                     <div class="profile-edit">
                         <h1>Perfil </h1>
                         <a href="/edit">
-                            <p><i class="fas fa-edit fa-lg" id="edit-icon"></i></p>
+                            <p>Editar<i class="fas fa-edit fa-lg" id="edit-icon"></i></p>
                         </a>
                     </div>
                     <h4 class="specialty-level">{{user.specialty}} ({{user.level}})</h4>
@@ -80,12 +85,11 @@
             <div class="invitation-card">
                 <h1>Convites</h1>
 
-                {{#each users}}
+                {{#each usersRequestingFriendship}}
                 <a href="/profile/{{_id}}">{{username}} te convidou</a>
                 <br><br>
                 <a href="/invitation-accepted/{{_id}}">Aceitar</a>
-                {{!-- <a href="/invitation-dennied/{{_id}}">Excluir</a> --}}
-                <a href="#">Excluir</a>
+                <a href="/invitation-refused/{{_id}}">Excluir</a>
                 <br>
                 <br><br>
                 {{/each}}

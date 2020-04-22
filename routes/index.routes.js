@@ -5,9 +5,7 @@ const router = express.Router();
 const ensureLogin = require("connect-ensure-login");
 const User = require("../models/user");
 const nodemailer = require("nodemailer");
-const multer = require("multer");
 const uploadCloud = require("../config/cloudinary.js");
-const upload = multer({ dest: "./public/uploads/" });
 
 router.get("/", (req, res, next) => {
   res.render("home");
@@ -17,13 +15,20 @@ router.get("/profile", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const { _id } = req.user;
   User.findById(_id)
     .then((user) => {
-      if (user.firstLogin === false) {
-        user.firstLogin = true;
+      if (user.firstLogin) {
         res.render("auth/edit-profile", user);
       } else {
         User.find({ _id: user.invitationReceived })
-          .then((users) => {
-            res.render("auth/profile", { user, users });
+          .then((usersRequestingFriendship) => {
+            User.find({ _id: user.friendship })
+              .then((friends) =>
+                res.render("auth/profile", {
+                  user,
+                  usersRequestingFriendship,
+                  friends,
+                })
+              )
+              .catch((err) => console.log(err));
           })
           .catch((err) => console.log(err));
       }
@@ -53,10 +58,20 @@ router.post("/profile", uploadCloud.single("photo"), (req, res) => {
 
 router.get("/profile/:id", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const { id } = req.params;
+  const user = req.user;
+  const userId = "" + req.user._id;
 
   User.find({ _id: id })
-    .then((user) => {
-      res.render("auth/others-profile", user[0]);
+    .then((profile) => {
+      const visitedProfile = profile[0];
+      let data = { visitedProfile };
+
+      if (visitedProfile.invitationReceived.includes(userId)) {
+        data.invitationId = userId;
+      } else if (visitedProfile.friendship.includes(userId)) {
+        data.user = user;
+      }
+      res.render("auth/others-profile", data);
     })
     .catch((err) => console.log(err));
 });
@@ -93,17 +108,93 @@ router.get(
     let { id } = req.params;
     let userId = "" + req.user._id;
 
-    User.findByIdAndUpdate(id, {
-      $push: { friendship: userId },
-    })
-      .then((resp) => {
+    User.findByIdAndUpdate(
+      id,
+      {
+        $push: { friendship: userId },
+      },
+      {
+        new: true,
+      }
+    )
+      .then((requested) => {
+        const resp = req.user;
         userId = req.user._id;
         id += "";
 
-        User.findByIdAndUpdate(userId, {
-          $push: { friendship: id },
-        })
-          .then((resp) => res.redirect("/profile"))
+        User.findByIdAndUpdate(
+          userId,
+          {
+            $push: { friendship: id },
+            $pull: { invitationReceived: id },
+          },
+          {
+            new: true,
+          }
+        )
+          .then((resp) => {
+            res.redirect("/profile");
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  }
+);
+
+router.get(
+  "/invitation-refused/:id",
+  ensureLogin.ensureLoggedIn(),
+  (req, res, next) => {
+    const { id } = req.params;
+    let userId = req.user._id;
+
+    User.findByIdAndUpdate(
+      userId,
+      {
+        $pull: { invitationReceived: id },
+      },
+      {
+        new: true,
+      }
+    )
+      .then((resp) => {
+        res.redirect("/profile");
+      })
+      .catch((err) => console.log(err));
+  }
+);
+
+router.get(
+  "/delete-friend/:id",
+  ensureLogin.ensureLoggedIn(),
+  (req, res, next) => {
+    const { id } = req.params;
+    let userId = req.user._id;
+
+    User.findByIdAndUpdate(
+      userId,
+      {
+        $pull: { friendship: id },
+      },
+      {
+        new: true,
+      }
+    )
+      .then((resp) => {
+        userId += "";
+
+        User.findByIdAndUpdate(
+          id,
+          {
+            $pull: { friendship: userId },
+          },
+          {
+            new: true,
+          }
+        )
+          .then((resp) => {
+            res.redirect("/profile");
+          })
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
@@ -122,9 +213,6 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
     specialty,
     level,
     musicalInfluence,
-    facebook,
-    instagram,
-    email,
   } = req.body;
 
   let { gender } = req.body;
@@ -136,24 +224,21 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   }
 
   let { lookingFor } = req.body;
-  const user = req.body;
-  console.log('=============== USER REQ.BODY', user)
-  console.log("***************LOOKING FOR 1", lookingFor);
+
   if (lookingFor === "all") {
     lookingFor = [
-      " Guitarra/Violão",
-      " Baixo",
-      " Bateria",
-      " Percussão",
-      " Vocal",
-      " Piano Bar/Teclado",
-      " Violino",
-      " Saxofone",
+      " Guitarrista/Violão",
+      " Baixista",
+      " Baterista",
+      " Percussionista",
+      " Vocalista",
+      " Pianista/Tecladista",
+      " Violinista",
+      " Saxofonista",
     ];
   } else {
     lookingFor = [lookingFor];
   }
-  console.log("***************LOOKING FOR 2", lookingFor);
 
   let query = {};
 
@@ -320,23 +405,7 @@ router.post("/search", ensureLogin.ensureLoggedIn(), (req, res, next) => {
 });
 
 router.get("/edit", ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  const user = ({
-    _id,
-    username,
-    name,
-    lastName,
-    gender,
-    age,
-    state,
-    city,
-    specialty,
-    level,
-    musicalInfluence,
-    bio,
-    facebook,
-    instagram,
-    email,
-  } = req.user);
+  const user = req.user;
 
   res.render("auth/edit-profile", user);
 });
@@ -347,14 +416,14 @@ router.post("/edit", (req, res, next) => {
     username,
     name,
     lastName,
-    gender,
     age,
     state,
     city,
-    specialty,
-    level,
+    gender,
     musicalInfluence,
+    specialty,
     lookingFor,
+    level,
     bio,
     facebook,
     instagram,
@@ -364,24 +433,22 @@ router.post("/edit", (req, res, next) => {
   User.findByIdAndUpdate(
     _id,
     {
-      $set: {
-        username,
-        name,
-        lastName,
-        firstLogin: true,
-        gender,
-        age,
-        state,
-        city,
-        specialty,
-        level,
-        musicalInfluence,
-        lookingFor,
-        bio,
-        facebook,
-        instagram,
-        email,
-      },
+      firstLogin: false,
+      username: username,
+      name: name,
+      lastName: lastName,
+      age: age,
+      state: state,
+      city: city,
+      gender: gender,
+      musicalInfluence: musicalInfluence,
+      specialty: specialty,
+      lookingFor: lookingFor,
+      level: level,
+      bio: bio,
+      facebook: facebook,
+      instagram: instagram,
+      email: email,
     },
     {
       new: true,

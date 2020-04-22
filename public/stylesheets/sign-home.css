@@ -1,9 +1,9 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url(/images/home-background.jpg);
-
+    background-image: url(/images/queen1985.jpg);
     background-size: cover;
+    /* background-size: ; */
     font-family: 'Airbnb Cereal App Bold';
 }
 

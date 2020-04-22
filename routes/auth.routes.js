@@ -31,16 +31,22 @@ router.post("/signup", (req, res, next) => {
       const newUser = new User({
         username,
         password: hashPass,
-        firstLogin: false,
+        firstLogin: true,
         welcomeMessage: "Você está muito próximo de montar sua primeira banda de sucesso. Para que os outros integrantes da banda possam te encontrar, complete o seu cadastro!",
         imgPath: 'images/noPhoto.png'
       });
 
-      newUser.save((err) => {
+      newUser.save((err, newUser) => {
         if (err) {
           res.render("home", { message: "Desculpe, algo deu errado!" });
         } else {
-          res.redirect("/profile");
+          req.login(newUser, (err) => {
+            if(err) {
+              res.render("home", { message: "Desculpe, algo deu errado!" });
+              console.log(err)
+            }
+            res.redirect('/profile');
+          });
         }
       });
     })
