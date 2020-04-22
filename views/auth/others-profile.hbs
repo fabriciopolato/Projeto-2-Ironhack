@@ -31,24 +31,28 @@
         <div class="profile-container">
             <div class="left-side">
                 <div class="name">
-                    <h1>{{name}} {{lastName}}</h1>
-                    <h4>{{username}}</h4>
+                    <h1>{{visitedProfile.name}} {{visitedProfile.lastName}}</h1>
+                    <h4>{{visitedProfile.username}}</h4>
                 </div>
                 <div class="bio">
-                    <p>{{bio}}</p>
+                    <p>{{visitedProfile.bio}}</p>
                 </div>
-                <form action="/profile/{{_id}}" method="POST">
-                    <div class="invitation-button-border">
-                        <div class="invitation">
-                            <input type="submit" value="Convidar">
+                {{#unless invitationId}}
+                    {{#unless user}}
+                    <form action="/profile/{{visitedProfile._id}}" method="POST">
+                        <div class="invitation-button-border">
+                            <div class="invitation">
+                                <input type="submit" value="Convidar">
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                    {{/unless}}
+                {{/unless}}
             </div>
 
             <div class="center">
                 <div>
-                    <img src="{{imgPath}}" alt="profile photo">
+                    <img src="{{visitedProfile.imgPath}}" alt="profile photo">
                 </div>
             </div>
 
@@ -56,37 +60,35 @@
                 <div class="profile">
                     <div class="profile-edit">
                         <h1>Perfil </h1>
-                        {{#if user}}
-                        <a href="/edit">
-                            <p><i class="fas fa-edit fa-lg" id="edit-icon"></i></p>
-                        </a>
-                        {{/if}}
                     </div>
-                    <h4 class="specialty-level">{{specialty}} ({{level}})</h4>
-                    <p>{{city}} / {{state}}</p>
-                    <p>{{musicalInfluence}}</p>
+                    <h4 class="specialty-level">{{visitedProfile.specialty}} ({{visitedProfile.level}})</h4>
+                    <p>{{visitedProfile.city}} / {{visitedProfile.state}}</p>
+                    <p>{{visitedProfile.musicalInfluence}}</p>
                 </div>
                 <div class="personal-info">
                     <h1>Informações Pessoais</h1>
-                    <p>{{facebook}}</p>
-                    <p>{{instagram}}</p>
-                    <p>{{email}}</p>
-                    {{#if age}}
-                    <p>{{age}} anos</p>
+                    <p>{{visitedProfile.facebook}}</p>
+                    <p>{{visitedProfile.instagram}}</p>
+                    <p>{{visitedProfile.email}}</p>
+                    {{#if visitedProfile.age}}
+                    <p>{{visitedProfile.age}} anos</p>
                     {{/if}}
-                    <p>{{gender}}</p>
+                    <p>{{visitedProfile.gender}}</p>
                 </div>
             </div>
+            {{#if user}}
             <div class="invitation-card">
-                <h1>Convites</h1>
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-                <p>5</p>
-                <p>6</p>
-                <p>7</p>
+                <h1>Envie um E-mail para {{visitedProfile.username}}</h1>
+                <form action="/send-email" method="post">
+                    <input type="hidden" name="email" value="{{visitedProfile.email}}">
+                    <input type="hidden" name="subject"
+                        value="BandMate - {{visitedProfile.username}} te enviou uma mensagem">
+                    <label for="">Mensagem:</label>
+                    <textarea type="text" name="message" id=""></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
             </div>
+            {{/if}}
         </div>
     </section>
 
