@@ -1,4 +1,4 @@
-.profile-container {
+/* .profile-container {
     margin: 30px 0 0 20px;
     display: flex;
     flex-direction: row;
@@ -36,7 +36,7 @@
 
 .left-side {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-end;
     text-align: right;
     width: 25vw;
@@ -81,21 +81,17 @@
     text-decoration: none;
 }
 
-.center {
+.profile-photo {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     width: 20vw;
     margin-top: 60px;
-    /* position: fixed; */
-    /* top: 30; */
     right: 47.5vw;
-    /* z-index: 1; */
 }
 
-.center img {
-    /* height: 30vw; */
-    width: 20rem;
+.profile-photo img {
+    width: 9.5rem;
     border: solid rgb(21,34,53);
 }
 
@@ -104,26 +100,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 10vw;
     border-radius: 2px;
     margin: 3px;
     margin-right: 0;
     background-color: rgb(21,34,53);
 }
 
-/* .photo-button-border:hover {
-} */
 
-.center label {
+.profile-photo label {
+    line-height: 2vw;
     font-family: "Airbnb Cereal App Medium";
     color: white;
     text-align: center;
     border-radius: 2px;
+    margin: 0;
+    width: 7vw;
+    height: 2vw;
+    background-color: rgb(21,34,53);
 }
 
-.center label:hover {
+.profile-photo label:hover {
     cursor: pointer;
 }
-.center #photo {
+.profile-photo #photo {
     width: 0;
     height: 0;
 }
@@ -132,12 +132,8 @@
     display: flex;
     flex-direction: row;
     text-align: left;
-    /* width: 20vw; */
     margin-top: 60px;
-    /* position: fixed; */
-    /* top: 30; */
     right: 24vw;
-    /* z-index: 1; */
 }
 
 .right-side .specialty-level {
@@ -165,4 +161,110 @@
 }
 .invitation-card h1 {
     text-align: center;
+} */
+
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  margin: 80px auto;
+  width: 100vw;
+  max-width: 1100px;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.left, .right {
+    padding: 0 10px;
+}
+
+.up-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.profile-photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 33%;
+}
+
+.profile-photo img {
+    margin: 0;
+    width: 100%;
+  }
+
+.up-left-2 {
+  text-align: right;
+}
+
+.name {
+  
+}
+
+#lookingFor-message {
+  text-align: left;
+}
+
+.name-media {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#face-icon,
+#insta-icon {
+  color: rgb(21, 34, 53);
+  margin-left: 10px;
+}
+
+#edit-icon {
+  color: rgb(21, 34, 53);
+  margin-left: 4px;
+  padding-bottom: 13px;
+}
+
+.photo-button-border {
+  color: white;
+  border: solid rgb(21, 34, 53);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: rgb(21, 34, 53);
+  padding: 5px;
+  /* width: 20%; */
+}
+
+.social-media {
+  align-self: flex-start;
+}
+
+.profile-edit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.profile-edit h1 {
+  margin: 0;
+}
+
+.name h4 {
+  text-align: right;
+}
+
+#save-photo {
+  margin-left: 5px;
+}
+
+.bio p {
+    text-align: justify;
 }

@@ -17,65 +17,64 @@
     </nav>
 
 
-    <section>
-        <div class="profile-container">
-            <div class="left-side">
-                <div class="center">
-                    <div>
-                        <img src="{{user.imgPath}}" alt="profile photo">
-                    </div>
+    <section class="profile-container">
+
+        <div class="left">
+            <div class="up-left">
+                <div class="profile-photo">
+
+                    <img src="{{user.imgPath}}" alt="profile photo">
+
                     <form action="/profile" method="POST" enctype="multipart/form-data">
                         <div class="photo-button-border">
                             <label for="photo">Mudar Foto</label>
-                            <input type="file" name="photo" id="photo">
-                            <input type="submit" value="Salvar">
+                            <input type="file" name="photo" id="photo" hidden>
+                            <input type="submit" value="Salvar" id='save-photo'>
                         </div>
                     </form>
+                    <p id="lookingFor-message">Procurando por: {{user.lookingFor}}</p>
                 </div>
                 <div class="name">
-                    <h1>{{user.name}} {{user.lastName}}</h1>
+                    <div class="name-media">
+                        <h1>{{user.name}} {{user.lastName}}</h1>
+                        <a href="//www.facebook.com/{{user.facebook}}"><i id="face-icon"
+                                class="fab fa-facebook-square fa-2x"></i></a>
+                        <a href="//www.instagram.com/{{user.instagram}}"><i id="insta-icon"
+                                class="fab fa-instagram-square fa-2x"></i></a>
+                    </div>
                     <h4>{{user.username}}</h4>
+                    <div class="up-left-2">
+                        <div class="profile">
+                            <h4 class="specialty-level">{{user.specialty}} ({{user.level}})</h4>
+                            <p>{{user.city}} / {{user.state}}</p>
+                            <p>{{user.musicalInfluence}}</p>
+                        </div>
+                        <div class="personal-info">
+                            {{#if user.age}}
+                            <p>{{user.age}} anos</p>
+                            {{/if}}
+                            <p>{{user.gender}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="down-left">
+                <div class="profile-edit">
+                    <h1>Perfil</h1>
+                    <a id="edit-icon" href="/edit">
+                        <i class="fas fa-edit fa-lg" id="edit-icon"></i>
+                    </a>
                 </div>
                 <div class="bio">
                     <p>{{user.bio}}</p>
                 </div>
-                {{#each friends}}
-                <div class="friends">
-                    <a href="/delete-friend/{{this._id}}">Excluir </a><a
-                        href="/profile/{{this._id}}">{{this.username}}</a>
-                </div>
-                {{/each}}
             </div>
+        </div>
 
-
-
-            <div class="right-side">
-                <div class="profile">
-                    <div class="profile-edit">
-                        <h1>Perfil </h1>
-                        <a id="edit-icon-container" href="/edit">
-                            <p><i class="fas fa-edit fa-lg" id="edit-icon"></i></p>
-                        </a>
-                    </div>
-                    <h4 class="specialty-level">{{user.specialty}} ({{user.level}})</h4>
-                    <p>{{user.city}} / {{user.state}}</p>
-                    <p>{{user.musicalInfluence}}</p>
-                    <p>Procurando por: {{user.lookingFor}}</p>
-                </div>
-                <div class="personal-info">
-                    <h1>Informações Pessoais</h1>
-                    <p>{{user.facebook}}</p>
-                    <p>{{user.instagram}}</p>
-                    <p>{{user.email}}</p>
-                    {{#if user.age}}
-                    <p>{{user.age}} anos</p>
-                    {{/if}}
-                    <p>{{user.gender}}</p>
-                </div>
-            </div>
-            <div class="invitation-card">
+        <div class="right">
+            <div class="up-right">
                 <h1>Convites</h1>
-
                 {{#each usersRequestingFriendship}}
                 <a href="/profile/{{_id}}">{{username}} te convidou</a>
                 <br><br>
@@ -85,7 +84,17 @@
                 <br><br>
                 {{/each}}
             </div>
+
+            <div class="down-right">
+                {{#each friends}}
+                <div class="friends">
+                    <a href="/delete-friend/{{this._id}}">Excluir </a><a
+                        href="/profile/{{this._id}}">{{this.username}}</a>
+                </div>
+                {{/each}}
+            </div>
         </div>
+
     </section>
 
     <footer>
