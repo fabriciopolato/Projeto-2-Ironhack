@@ -1,10 +1,10 @@
-* {
+.search {
     font-family: "Airbnb Cereal App Medium";
 }
 
 .form-search {
-    margin: 120px 60px 60px;
-    padding: 60px;
+    margin: 90px 60px 60px;
+    padding: 30px 60px;
     background-color: rgb(0, 0, 0) ;
     border-radius: 10px;
 }
@@ -24,6 +24,15 @@
     font-size: 1.3rem;
 }
 
+.search-title {
+    color: white;
+    text-align: center;
+}
+
+#search-button {
+    background-color: green;
+}
+
 #search-button:hover {
     color: black;
     background-color: white;
@@ -33,21 +42,23 @@
 .top-row {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
 }
 
 .city-state-box {
-    margin: 0 135px 0 125px;
+    margin: 0 135px 0 135px;
+
 }
 
 .checkboxes {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
 }
 
 .musical-box-and-label {
     display: flex;
-    flex-direction: column;
-}
+    flex-direction: column;}
 
 .musical-influence-box {
     display: flex;
@@ -55,11 +66,10 @@
 }
 
 .musical-second-col {
-    margin: 0 60px 0 40px;
+    margin: 0 0 0 40px;
     border-right: 5px solid firebrick;
-    padding-right: 50px;
+    padding-right: 30px;
 }
-
 
 .specialty-box {
     display: flex;
@@ -67,42 +77,38 @@
 }
 
 .specialty-second-col {
-    margin: 0 60px 0 40px;
+    margin: 0 0 0 40px;
     border-right: 5px solid firebrick;
-    padding-right: 50px;
+    padding-right: 30px;
 }
 
 .specialty-box-label {
     display: flex;
     flex-direction: column;
+    padding: 0 30px;
+
 }
 
 .level-box-label {
     display: flex;
     flex-direction: column;
+    padding-right: 30px;
 }
-
-.level-col {
-    margin-right: 50px;
-    border-right: 5px solid firebrick;
-    padding-right: 150px;
-
-}
-
 
 /* PROFILE-CARD */
 
 .cards-container {
-    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    margin-left: 60px;
+    margin-right: 40px;
 }
 
 .profile-card {
     color: black;
     display: flex;
     flex-direction: row;
-    margin: 0 60px 20px 60px;
+    margin: 0 20px 20px 0;
     border: solid black;
 }
 

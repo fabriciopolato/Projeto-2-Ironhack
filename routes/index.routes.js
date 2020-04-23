@@ -478,6 +478,7 @@ router.get("/delete/:id", ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
 router.post("/send-email", (req, res, next) => {
   let { email, subject, message } = req.body;
+  console.log('******************', email, subject, message)
 
   let transporter = nodemailer.createTransport({
     service: "Gmail",
@@ -489,7 +490,7 @@ router.post("/send-email", (req, res, next) => {
 
   transporter
     .sendMail({
-      from: '"BandMate Support" <support@bandmate.com>',
+      from: '"BandMate Support" <bandmate100@gmail.com>',
       to: email,
       subject: subject,
       text: message,

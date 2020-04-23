@@ -1,108 +1,124 @@
+.home-login {
+  margin: 0;
+  padding: 0;
+  background-image: url(/images/FreddieMercury.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100vh;
+  font-family: "Airbnb Cereal App Bold";
+  background-color: rgb(3, 18, 23);
+  background-position: 75%;
+}
+
 .home {
-    margin: 0;
-    padding: 0;
-    background-image: url(/images/queen1985.jpg);
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    font-family: 'Airbnb Cereal App Bold';
+  margin: 0;
+  padding: 0;
+  background-image: url(/images/FreddieMercury-invertido.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100vh;
+  font-family: "Airbnb Cereal App Bold";
+  background-color: rgb(3, 18, 23);
+  background-position: 25%;
 }
 
 /* NAV */
 .--home {
-    background-color: rgba(178, 34, 34, 0);
-    position: static;
+  background-color: rgba(178, 34, 34, 0);
+  position: static;
+}
+
+.logo-home p{
+  color: white;
+  font-family: "HARD ROCK", sans-serif;
+  font-size: 3rem;
+  margin: 0;
+  margin-left: 40px;
+  padding: 0;
+  text-decoration: none;
+  padding-top: 4px;
 }
 
 /* MAIN SECTION */
 .main-section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .sign {
-    background-color: rgba(0, 0, 0, 0.504);
-    width: 30%;
-    color: white;
-    margin: 40px 0 0 100px;
-    border-radius: 15px;
+  background-color: rgba(0, 0, 0);
+  width: 30%;
+  color: white;
+  margin: 60px 0 0 60%;
+  border-radius: 15px;
 }
 
 .sign-login {
-    background-color: rgba(0, 0, 0, 0.404);
-    width: 30%;
-    /* color: rgb(65,65,65); */
-    color: white;
-    margin: 40px 100px 0 0;
-    border-radius: 15px;
+  background-color: rgba(0, 0, 0);
+  width: 30%;
+  color: white;
+  margin: 60px 0 0 10%;
+  border-radius: 15px;
 }
 
 .sign-form {
-    margin: 55px;
-    margin-bottom: 15px;
-    font-family: "Airbnb Cereal App Bold";
+  margin: 55px;
+  margin-bottom: 15px;
+  font-family: "Airbnb Cereal App Bold";
 }
 
 .sign-form a {
-    text-decoration: none;
+  color: firebrick;
+}
+
+.sign-form a:hover {
+  text-decoration: underline;
 }
 
 .sign-form h2 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .sign-form button {
-    font-size: 15px;
-    color: white;
-    background-color: rgb(206,42,52);
-    border: none;
-    border-radius: 5px;
-    width: 7rem;
-    height: 50px;
+  font-size: 15px;
+  color: white;
+  background-color: rgb(206, 42, 52);
+  border: none;
+  border-radius: 5px;
+  width: 7rem;
+  height: 50px;
+}
+
+.sign-form button p {
+  margin: 0;
+  padding: 0;
 }
 
 .sign-form input {
-    border-radius: 6px;
-    height: 40px;
-    font-size: 1.3rem;
-    background-color: rgb(236, 226, 226);
+  border-radius: 6px;
+  height: 40px;
+  font-size: 1.3rem;
+  background-color: rgb(236, 226, 226);
 }
 
 .sign-form p {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .sign-button-and-login {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .sign-button:hover {
-    /* cursor: url('/public/images/cursor.png'), auto; */
-    cursor: pointer;
-}
-
-.bandmate {
-    margin-right:7%;
-    /* margin-top: 10%; */
-    margin-bottom: 22%;
-    font-size: 10rem;
-    color: black;
-    font-family: 'HARD ROCK', sans-serif;
-}
-
-.bandmate-login {
-    margin-left:7%;
-    margin-bottom: 15%;
-    font-size: 10rem;
-    color: black;
-    font-family: 'HARD ROCK', sans-serif;
+  /* cursor: url('/public/images/cursor.png'), auto; */
+  cursor: pointer;
 }
 
 .bandmate-login::selection {
-    background-color: pink;
+  background-color: pink;
 }
