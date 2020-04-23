@@ -1,8 +1,8 @@
 <div class="home">
     <nav class="container-nav --home">
-        <div class="logo">
-            <a href="/">
-                <p>Band Mate</p>
+        <div class="logo-home">
+            <a href="/profile">
+                <p>BandMate</p>
             </a>
         </div>
         <div>
@@ -10,8 +10,8 @@
                 <li class="navbar-links"><a href="#">Sobre</a></li>
                 {{#unless username}}
                 <li class="navbar-links"><a href="/">Cadastrar</a></li>
-                <li class="navbar-links"><a href="/login">Login</a></li>
-                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+                <li id="profile-icon" class="navbar-links"><a href="/login">Login</a></li>
+                {{!-- <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li> --}}
                 {{/unless}}
                 {{#if username}}
                 <li class="navbar-links"><a href="/logout">Sair</a></li>

@@ -46,6 +46,10 @@
     url("/fonts/airbnb-cereal-app-cufonfonts-webfont/AirbnbCerealBlack.woff") format("woff");
 }
 
+* {
+  font-family: "Airbnb Cereal App Medium";
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -61,7 +65,8 @@ i {
 }
 
 a {
-  text-decoration: none !important;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* NAVBAR */

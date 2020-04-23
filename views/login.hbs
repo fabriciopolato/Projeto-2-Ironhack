@@ -1,8 +1,8 @@
-<div class="home">
+<div class="home-login">
 	<nav class="container-nav --home">
-		<div class="logo">
-			<a href="/">
-				<p>Band Mate</p>
+		<div class="logo-home">
+			<a href="/profile">
+				<p>BandMate</p>
 			</a>
 		</div>
 		<div>
@@ -10,24 +10,22 @@
 				<li class="navbar-links"><a href="#">Sobre</a></li>
 				{{#unless username}}
 				<li class="navbar-links"><a href="/">Cadastrar</a></li>
-				<li class="navbar-links"><a href="/login">Login</a></li>
-				<li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+				<li id="profile-icon" class="navbar-links"><a href="/login">Login</a></li>
+				{{!-- <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li> --}}
 				{{/unless}}
 				{{#if username}}
 				<li class="navbar-links"><a href="/logout">Sair</a></li>
 				{{/if}}
-
 			</ul>
 		</div>
 	</nav>
 
 	<main>
 		<section class="main-section">
-			<h1 class="bandmate-login">Band Mate</h1>
 			<div class="sign-login">
 				<div class="sign-form">
 
-					<h2>Olá! Que bom te ver novamente.</h2>
+					<h2>Já estávamos com saudades.</h2>
 
 					<h2>Preparado para a sua próxima turnê?</h2>
 

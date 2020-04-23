@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/profile.css">
-    <title>Profile</title>
-</head>
-
-<body>
-
+<div class="profile">
     <nav class="container-nav">
         <div class="logo">
-            <a href="/">
+            <a href="/profile">
                 <p>BandMate</p>
             </a>
         </div>
         <div>
             <ul class="list">
-                <li class="navbar-links"><a href="/search">Buscar<i class="fas fa-search"></i></a></li>
+                <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
                 <li class="navbar-links"><a href="#">Sobre</a></li>
                 <li class="navbar-links"><a href="/logout">Logout</a></li>
                 <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
@@ -31,6 +20,18 @@
     <section>
         <div class="profile-container">
             <div class="left-side">
+                <div class="center">
+                    <div>
+                        <img src="{{user.imgPath}}" alt="profile photo">
+                    </div>
+                    <form action="/profile" method="POST" enctype="multipart/form-data">
+                        <div class="photo-button-border">
+                            <label for="photo">Mudar Foto</label>
+                            <input type="file" name="photo" id="photo">
+                            <input type="submit" value="Salvar">
+                        </div>
+                    </form>
+                </div>
                 <div class="name">
                     <h1>{{user.name}} {{user.lastName}}</h1>
                     <h4>{{user.username}}</h4>
@@ -40,30 +41,20 @@
                 </div>
                 {{#each friends}}
                 <div class="friends">
-                    <a href="/delete-friend/{{this._id}}">Excluir </a><a href="/profile/{{this._id}}">{{this.username}}</a>
+                    <a href="/delete-friend/{{this._id}}">Excluir </a><a
+                        href="/profile/{{this._id}}">{{this.username}}</a>
                 </div>
                 {{/each}}
             </div>
 
-            <div class="center">
-                <div>
-                    <img src="{{user.imgPath}}" alt="profile photo">
-                </div>
-                <form action="/profile" method="POST" enctype="multipart/form-data">
-                    <div class="photo-button-border">
-                        <label for="photo">Mudar Foto</label>
-                        <input type="file" name="photo" id="photo">
-                        <input type="submit" value="Salvar">
-                    </div>
-                </form>
-            </div>
+
 
             <div class="right-side">
                 <div class="profile">
                     <div class="profile-edit">
                         <h1>Perfil </h1>
-                        <a href="/edit">
-                            <p>Editar<i class="fas fa-edit fa-lg" id="edit-icon"></i></p>
+                        <a id="edit-icon-container" href="/edit">
+                            <p><i class="fas fa-edit fa-lg" id="edit-icon"></i></p>
                         </a>
                     </div>
                     <h4 class="specialty-level">{{user.specialty}} ({{user.level}})</h4>
@@ -102,6 +93,4 @@
 
         </div>
     </footer>
-</body>
-
-</html>
+</div>

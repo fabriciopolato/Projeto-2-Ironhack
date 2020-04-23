@@ -1,8 +1,8 @@
 <div class="others">
     <nav class="container-nav">
         <div class="logo">
-            <a href="/">
-                <p>Band Mate</p>
+            <a href="/profile">
+                <p>BandMate</p>
             </a>
         </div>
         <div>
@@ -37,6 +37,14 @@
                 </form>
                 {{/unless}}
                 {{/unless}}
+
+                {{#if invitationId}}
+                    <div class="invitation-button-border">
+                        <div class="invitation">
+                            <input type="submit" value="Enviado">
+                        </div>
+                    </div>
+                {{/if}}
             </div>
 
             <div class="center">

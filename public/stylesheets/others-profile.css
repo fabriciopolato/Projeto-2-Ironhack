@@ -3,35 +3,6 @@
     color: rgb(21,34,53);
 }
 
-.list {
-    display: flex;
-    align-items: center;
-    margin: 0;
-}
-
-.navbar-links a:hover {
-    color: white;
-    border-bottom: firebrick solid;
-}
-
-.profile-container {
-    margin: 30px 0 0 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.left-side {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
-    width: 25vw;
-    margin-top: 60px;
-    margin-left: 1vw;
-}
-
 .left-side .name h4 {
     color: firebrick;
 }
@@ -75,10 +46,10 @@
     align-items: flex-end;
     width: 20vw;
     margin-top: 60px;
-    position: fixed;
-    top: 30;
+    /* position: fixed; */
+    /* top: 30; */
     right: 47.5vw;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .center img {
@@ -92,8 +63,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 7.8vw;
-    height: 2.8vw;
+    width: 10vw;
     border-radius: 2px;
     margin: 3px;
     margin-right: 0;
@@ -121,16 +91,6 @@
 .center #photo {
     width: 0;
     height: 0;
-}
-
-.right-side {
-    text-align: left;
-    width: 20vw;
-    margin-top: 60px;
-    position: fixed;
-    top: 30;
-    right: 24vw;
-    z-index: 1;
 }
 
 .right-side .specialty-level {

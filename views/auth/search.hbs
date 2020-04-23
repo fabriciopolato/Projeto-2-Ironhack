@@ -1,169 +1,182 @@
-<nav class="container-nav">
-    <div class="logo">
-        <a href="/">
-            <p>Band Mate</p>
-        </a>
-    </div>
-    <div>
-        <ul class="list">
-            <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
-            <li class="navbar-links"><a href="#">Sobre</a></li>
-            <li class="navbar-links"><a href="/logout">Logout</a></li>
-            <li id="profile-icon"><a href="/profile">Meu Perfil<i class="fas fa-user-circle fa-2x"></i></a></li>
-        </ul>
-    </div>
-</nav>
-
-<form class="form-search" action="/search" method="POST">
-    <div class="form-content">
-        <div class="top-row">
-            <div>
-                <label class="title">Nome de Usuário:</label>
-                <br>
-                <input type="text" name="username">
-            </div>
-            <br>
-            <div class="city-state-box">
-                <label class="title">Estado:</label>
-                <input type="text" name="state">
-                <br>
-                <label class="title">Cidade:</label>
-                <input type="text" name="city">
-            </div>
-            <br>
-            <div class="gender-box">
-                <label class="title">Sexo:</label>
-                <br>
-                <select id="gender" name="gender">
-                    <option value="both">Ambos</option>
-                    <option value="Homem">Homem</option>
-                    <option value="Mulher">Mulher</option>
-                </select>
-            </div>
+<div class="search">
+    <nav class="container-nav">
+        <div class="logo">
+            <a href="/profile">
+                <p>BandMate</p>
+            </a>
         </div>
-        <br>
-        <div class="checkboxes">
-            <div class="musical-box-and-label">
-                <label class="title">Gênero:</label>
-                <div class="musical-influence-box">
-                    <div>
-                        <input type="checkbox" value=" Rock" name="musicalInfluence">
-                        <label> Rock</label><br>
-                        <input type="checkbox" value=" Jazz & Blues" name="musicalInfluence">
-                        <label> Jazz & Blues</label><br>
-                        <input type="checkbox" value=" Samba" name="musicalInfluence">
-                        <label> Samba</label><br>
-                        <input type="checkbox" value=" MPB" name="musicalInfluence">
-                        <label> MPB</label><br>
-                    </div>
-                    <div class="musical-second-col">
-                        <input type="checkbox" value=" Sertanejo" name="musicalInfluence">
-                        <label> Sertanejo</label><br>
-                        <input type="checkbox" value=" Eletrônico" name="musicalInfluence">
-                        <label> Eletrônico</label><br>
-                        <input type="checkbox" value=" Clássica" name="musicalInfluence">
-                        <label> Clássica</label><br>
-                        <input type="checkbox" value=" Metal" name="musicalInfluence">
-                        <label> Metal</label><br>
-                    </div>
-                </div>
-            </div>
+        <div>
+            <ul class="list">
+                <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
+                <li class="navbar-links"><a href="#">Sobre</a></li>
+                <li class="navbar-links"><a href="/logout">Logout</a></li>
+                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <form class="form-search" action="/search" method="POST">
+        <div class="form-content">
+            <h1 class="search-title">Busca Avançada</h1>
             <br>
             <br>
-            <div class="specialty-box-label">
-                <label class="title">Especialidade:</label>
-                <div class="specialty-box">
-                    <div>
-                        <input type="checkbox" value=" Guitarra/Violão" name="specialty">
-                        <label> Guitarra/Violão</label><br>
-                        <input type="checkbox" value=" Baixo" name="specialty">
-                        <label> Baixo</label><br>
-                        <input type="checkbox" value=" Bateria" name="specialty">
-                        <label> Bateria</label><br>
-                        <input type="checkbox" value=" Percussão" name="specialty">
-                        <label> Percussão</label><br>
-                    </div>
-                    <div class="specialty-second-col">
-                        <input type="checkbox" value=" Vocal" name="specialty">
-                        <label> Vocal</label><br>
-                        <input type="checkbox" value=" Piano Bar/Teclado" name="specialty">
-                        <label> Piano Bar/Teclado</label><br>
-                        <input type="checkbox" value=" Violino" name="specialty">
-                        <label> Violino</label><br>
-                        <input type="checkbox" value=" Saxofone" name="specialty">
-                        <label> Saxofone</label><br>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="level-box-label">
-                <div class="level-box">
-                    <label class="title">Nível de Conhecimento:</label>
-                    <div class="level-col">
-                        <input type="checkbox" name="level" value='Iniciante'>
-                        <label> Iniciante</label><br>
-                        <input type="checkbox" name="level" value="Intermediário">
-                        <label> Intermediário</label><br>
-                        <input type="checkbox" name="level" value="Avançado">
-                        <label> Avançado</label><br>
-                        <input type="checkbox" name="level" value="Profissional">
-                        <label> Profissional</label><br>
-                    </div>
-                </div>
-            </div>
-            <div class="gender-box-label">
-                <div class="gender-box">
-                    <label class="title">Músicos buscando por:</label>
+            <div class="top-row">
+                <div>
+                    <label class="title">Nome de Usuário:</label>
                     <br>
-                    <select id="lookingForm" name="lookingFor">
-                        <option value="all">Todos</option>
-                        <option value=" Guitarrista/Violão">Guitarrista/Violão</option>
-                        <option value=" Baixista">Baixista</option>
-                        <option value=" Baterista">Baterista</option>
-                        <option value=" Percussionista">Percussionista</option>
-                        <option value=" Vocalista">Vocalista</option>
-                        <option value=" Pianista/Tecladista">Tecladista</option>
-                        <option value=" Violinista">Violinista</option>
-                        <option value=" Saxofonista">Saxofonista</option>
+                    <input type="text" name="username">
+                </div>
+                <br>
+                <div class="city-state-box">
+                    <label class="title">Estado:</label>
+                    <input type="text" name="state">
+                    <br>
+                    <label class="title">Cidade:</label>
+                    <input type="text" name="city">
+                </div>
+                <br>
+                <div class="gender-box">
+                    <label class="title">Sexo:</label>
+                    <br>
+                    <select id="gender" name="gender">
+                        <option value="both">Ambos</option>
+                        <option value="Homem">Homem</option>
+                        <option value="Mulher">Mulher</option>
                     </select>
                 </div>
             </div>
+            <br>
+            <br>
+            <br>
+            <div class="checkboxes">
+                <div class="musical-box-and-label">
+                    <label class="title">Gênero:</label>
+                    <div class="musical-influence-box">
+                        <div>
+                            <input type="checkbox" value=" Rock" name="musicalInfluence">
+                            <label> Rock</label><br>
+                            <input type="checkbox" value=" Jazz & Blues" name="musicalInfluence">
+                            <label> Jazz & Blues</label><br>
+                            <input type="checkbox" value=" Samba" name="musicalInfluence">
+                            <label> Samba</label><br>
+                            <input type="checkbox" value=" MPB" name="musicalInfluence">
+                            <label> MPB</label><br>
+                        </div>
+                        <div class="musical-second-col">
+                            <input type="checkbox" value=" Sertanejo" name="musicalInfluence">
+                            <label> Sertanejo</label><br>
+                            <input type="checkbox" value=" Eletrônico" name="musicalInfluence">
+                            <label> Eletrônico</label><br>
+                            <input type="checkbox" value=" Clássica" name="musicalInfluence">
+                            <label> Clássica</label><br>
+                            <input type="checkbox" value=" Metal" name="musicalInfluence">
+                            <label> Metal</label><br>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="specialty-box-label">
+                    <label class="title">Especialidade:</label>
+                    <div class="specialty-box">
+                        <div>
+                            <input type="checkbox" value=" Guitarra/Violão" name="specialty">
+                            <label> Guitarra/Violão</label><br>
+                            <input type="checkbox" value=" Baixo" name="specialty">
+                            <label> Baixo</label><br>
+                            <input type="checkbox" value=" Bateria" name="specialty">
+                            <label> Bateria</label><br>
+                            <input type="checkbox" value=" Percussão" name="specialty">
+                            <label> Percussão</label><br>
+                        </div>
+                        <div class="specialty-second-col">
+                            <input type="checkbox" value=" Vocal" name="specialty">
+                            <label> Vocal</label><br>
+                            <input type="checkbox" value=" Piano Bar/Teclado" name="specialty">
+                            <label> Piano Bar/Teclado</label><br>
+                            <input type="checkbox" value=" Violino" name="specialty">
+                            <label> Violino</label><br>
+                            <input type="checkbox" value=" Saxofone" name="specialty">
+                            <label> Saxofone</label><br>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="level-box-label">
+                    <div class="level-box">
+                        <label class="title">Nível de Conhecimento:</label>
+                        <div class="level-col">
+                            <input type="checkbox" name="level" value='Iniciante'>
+                            <label> Iniciante</label><br>
+                            <input type="checkbox" name="level" value="Intermediário">
+                            <label> Intermediário</label><br>
+                            <input type="checkbox" name="level" value="Avançado">
+                            <label> Avançado</label><br>
+                            <input type="checkbox" name="level" value="Profissional">
+                            <label> Profissional</label><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="third-row">
+                <div class="gender-box-label">
+                    <div class="gender-box">
+                        <label class="title">Músicos buscando por:</label>
+                        <br>
+                        <select id="lookingForm" name="lookingFor">
+                            <option value="all">Todos</option>
+                            <option value=" Guitarrista/Violão">Guitarrista/Violão</option>
+                            <option value=" Baixista">Baixista</option>
+                            <option value=" Baterista">Baterista</option>
+                            <option value=" Percussionista">Percussionista</option>
+                            <option value=" Vocalista">Vocalista</option>
+                            <option value=" Pianista/Tecladista">Tecladista</option>
+                            <option value=" Violinista">Violinista</option>
+                            <option value=" Saxofonista">Saxofonista</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="btn-edit">
+                <button id="search-button" type="submit">Buscar</button>>
+            </div>
         </div>
-        <br>
-        <div>
-            <input id="search-button" type="submit" value="Buscar">
+    </form>
+
+    <div class="cards-container">
+        {{#each users}}
+        <div class="profile-card">
+
+            <div class="profile-photo">
+                <a href="/profile/{{_id}}"><img src="{{this.imgPath}}" alt="profile photo"></a>
+            </div>
+
+            <div class="info-card">
+                <div class="name-lastname">
+                    <a href="/profile/{{_id}}">{{this.name}} {{this.lastName}}</a>
+                    <br>
+                    <a id="username-link" href="/profile/{{_id}}">{{this.username}}</a>
+                </div>
+                <div class="specialty-level">
+                    <br>
+                    <p>{{this.specialty}}</p>
+                    <p class="level-card">{{this.level}}</p>
+                    <br>
+                </div>
+                <div class="musical-influence">
+                    <ul>
+                        {{#each this.musicalInfluence}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
         </div>
+        {{/each}}
     </div>
-</form>
-
-<div class="cards-container">
-    {{#each users}}
-    <div class="profile-card">
-
-        <div class="profile-photo">
-            <a href="/profile/{{_id}}"><img src="{{this.imgPath}}" alt="profile photo"></a>
-        </div>
-
-        <div class="info-card">
-            <div class="name-lastname">
-                <a href="/profile/{{_id}}">{{this.name}} {{this.lastName}}</a>
-                <br>
-                <a id="username-link" href="/profile/{{_id}}">{{this.username}}</a>
-            </div>
-            <div class="specialty-level">
-                <br>
-                <p>{{this.specialty}}</p>
-                <p class="level-card">{{this.level}}</p>
-                <br>
-            </div>
-            <div class="musical-influence">
-                <ul>
-                    {{#each this.musicalInfluence}}
-                    <li>{{this}}</li>
-                    {{/each}}
-                </ul>
-            </div>
-        </div>
-    </div>
-    {{/each}}
 </div>
