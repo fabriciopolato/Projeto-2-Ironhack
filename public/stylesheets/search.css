@@ -2,15 +2,18 @@
     font-family: "Airbnb Cereal App Medium";
 }
 
-form {
-    margin: 60px;
+.form-search {
+    margin: 120px 60px 60px;
     padding: 60px;
     background-color: rgb(0, 0, 0) ;
-    color: white;
     border-radius: 10px;
 }
 
-form input {
+.form-search label {
+    color: white;
+}
+
+.form-search input {
     color: white;
     border: white solid;
     background-color: black;

@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="stylesheets/sign-home.css">
-
-	<title>Log In</title>
-</head>
-
-<body>
-
-	<nav class="container-nav">
+<div class="home">
+	<nav class="container-nav --home">
 		<div class="logo">
 			<a href="/">
 				<p>Band Mate</p>
@@ -23,7 +11,7 @@
 				{{#unless username}}
 				<li class="navbar-links"><a href="/">Cadastrar</a></li>
 				<li class="navbar-links"><a href="/login">Login</a></li>
-                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+				<li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
 				{{/unless}}
 				{{#if username}}
 				<li class="navbar-links"><a href="/logout">Sair</a></li>
@@ -39,7 +27,7 @@
 			<div class="sign-login">
 				<div class="sign-form">
 
-					<h2>Olá! Os vizinhos já estavam sentindo a sua falta.</h2>
+					<h2>Olá! Que bom te ver novamente.</h2>
 
 					<h2>Preparado para a sua próxima turnê?</h2>
 
@@ -73,7 +61,4 @@
 			</div>
 		</section>
 	</main>
-
-</body>
-
-</html>
+</div>

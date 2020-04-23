@@ -1,15 +1,17 @@
-body {
+.home {
     margin: 0;
     padding: 0;
     background-image: url(/images/queen1985.jpg);
     background-size: cover;
-    /* background-size: ; */
+    width: 100vw;
+    height: 100vh;
     font-family: 'Airbnb Cereal App Bold';
 }
 
 /* NAV */
-.container-nav {
+.--home {
     background-color: rgba(178, 34, 34, 0);
+    position: static;
 }
 
 /* MAIN SECTION */
@@ -40,6 +42,7 @@ body {
 .sign-form {
     margin: 55px;
     margin-bottom: 15px;
+    font-family: "Airbnb Cereal App Bold";
 }
 
 .sign-form a {
@@ -98,4 +101,8 @@ body {
     font-size: 10rem;
     color: black;
     font-family: 'HARD ROCK', sans-serif;
+}
+
+.bandmate-login::selection {
+    background-color: pink;
 }

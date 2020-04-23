@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/others-profile.css">
-    <title>Others' Profile</title>
-</head>
-
-<body>
-
+<div class="others">
     <nav class="container-nav">
         <div class="logo">
             <a href="/">
@@ -38,15 +27,15 @@
                     <p>{{visitedProfile.bio}}</p>
                 </div>
                 {{#unless invitationId}}
-                    {{#unless user}}
-                    <form action="/profile/{{visitedProfile._id}}" method="POST">
-                        <div class="invitation-button-border">
-                            <div class="invitation">
-                                <input type="submit" value="Convidar">
-                            </div>
+                {{#unless user}}
+                <form action="/profile/{{visitedProfile._id}}" method="POST">
+                    <div class="invitation-button-border">
+                        <div class="invitation">
+                            <input type="submit" value="Convidar">
                         </div>
-                    </form>
-                    {{/unless}}
+                    </div>
+                </form>
+                {{/unless}}
                 {{/unless}}
             </div>
 
@@ -97,6 +86,4 @@
 
         </div>
     </footer>
-</body>
-
-</html>
+</div>

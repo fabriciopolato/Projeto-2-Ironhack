@@ -1,77 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="home">
+    <nav class="container-nav --home">
+        <div class="logo">
+            <a href="/">
+                <p>Band Mate</p>
+            </a>
+        </div>
+        <div>
+            <ul class="list">
+                <li class="navbar-links"><a href="#">Sobre</a></li>
+                {{#unless username}}
+                <li class="navbar-links"><a href="/">Cadastrar</a></li>
+                <li class="navbar-links"><a href="/login">Login</a></li>
+                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+                {{/unless}}
+                {{#if username}}
+                <li class="navbar-links"><a href="/logout">Sair</a></li>
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="stylesheets/sign-home.css">
+    <main>
+        <section class="main-section">
+            <div class="sign">
+                <div class="sign-form">
 
-	<title>Home/Signup</title>
-</head>
+                    <h2>Não deixe a fama esperando.</h2>
 
-<body>
+                    <h2>Cadastre-se hoje. </h2>
 
-	<nav class="container-nav">
-		<div class="logo">
-			<a href="/">
-				<p>Band Mate</p>
-			</a>
-		</div>
-		<div>
-			<ul class="list">
-				<li class="navbar-links"><a href="#">Sobre</a></li>
-				{{#unless username}}
-				<li class="navbar-links"><a href="/">Cadastrar</a></li>
-				<li class="navbar-links"><a href="/login">Login</a></li>
-                <li id="profile-icon"><a href="/profile">Meu Perfil<i class="fas fa-user-circle fa-2x"></i></a></li>
-				{{/unless}}
-				{{#if username}}
-				<li class="navbar-links"><a href="/logout">Sair</a></li>
-				{{/if}}
-			</ul>
-		</div>
-	</nav>
+                    <form action="/signup" method="POST" id="form-container">
+                        <label for="username">Username</label>
+                        <br>
+                        <input id="username" type="text" name="username" placeholder="Nina Simone" required>
+                        <br><br>
+                        <label for="password">Password</label>
+                        <br>
+                        <input id="password" type="password" name="password" placeholder="********" required>
 
-	<main>
-		<section class="main-section">
-			<div class="sign">
-				<div class="sign-form">
-					
-					<h2>Não deixe a fama esperando.</h2>
+                        {{#if message}}
+                        <div class="error-message">{{ message }}</div>
+                        {{/if}}
+                        <br><br>
 
-					<h2>Cadastre-se e comece sua banda hoje mesmo. </h2>
-
-					<form action="/signup" method="POST" id="form-container">
-						<label for="username">Username</label>
-						<br>
-						<input id="username" type="text" name="username" placeholder="Nina Simone" required>
-						<br><br>
-						<label for="password">Password</label>
-						<br>
-						<input id="password" type="password" name="password" placeholder="********" required>
-
-						{{#if message}}
-						<div class="error-message">{{ message }}</div>
-						{{/if}}
-						<br><br>
-
-						<div class="sign-button-and-login">
-							<button class="sign-button" type="submit">
-								<p>Criar conta</p>
-							</button>
-							<p class="account-message">
-								Já tem uma conta?
-								<a href="/login">Login</a>
-							</p>
-						</div>
-						<br>
-					</form>
-				</div>
-			</div>
-			<h1 class="bandmate">BandMate</h1>
-		</section>
-	</main>
-
-</body>
-
-</html>
+                        <div class="sign-button-and-login">
+                            <button class="sign-button" type="submit">
+                                <p>Criar conta</p>
+                            </button>
+                            <p class="account-message">
+                                Já tem uma conta?
+                                <a href="/login">Login</a>
+                            </p>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
