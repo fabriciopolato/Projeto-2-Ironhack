@@ -60,8 +60,17 @@ i {
   color: white;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 /* NAVBAR */
 .container-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -69,7 +78,6 @@ i {
   background-color: firebrick;
   align-items: center;
   font-size: 1.2rem;
-  z-index: 99;
 }
 
 #profile-icon {
