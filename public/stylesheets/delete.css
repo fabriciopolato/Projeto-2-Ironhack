@@ -1,0 +1,15 @@
+.container-delete {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.delete-message {
+    text-align: center;
+    padding: auto;
+    margin-top: 30vh;
+    font-size: 30px;
+}
+
+#delete-btn {}

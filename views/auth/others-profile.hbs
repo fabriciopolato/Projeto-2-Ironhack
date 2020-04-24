@@ -99,6 +99,7 @@
             </div>
         </div>
 
+        {{#if user}}
         <div class="email-box">
             <h1>Envie um E-mail para {{visitedProfile.username}}</h1>
             <form action="/send-email" method="post">
@@ -110,6 +111,7 @@
                 <button type="submit">Enviar</button>
             </form>
         </div>
+        {{/if}}
 
     </section>
 
