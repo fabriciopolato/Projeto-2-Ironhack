@@ -80,7 +80,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px 0 10px 0;
+  padding: 10px 0 0 10px;
   background-color: firebrick;
   align-items: center;
   font-size: 1.2rem;
@@ -97,6 +97,7 @@ a {
   justify-content: space-evenly;
   list-style-type: none;
   align-items: center;
+  position: relative;
 }
 
 li {
