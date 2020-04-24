@@ -1,3 +1,25 @@
+<nav class="container-nav">
+        <div class="logo">
+            <a href="/profile">
+                <p>BandMate</p>
+            </a>
+        </div>
+        <div>
+            <ul class="list">
+                <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
+                <li class="navbar-links"><a href="#">Sobre</a></li>
+                <div class="drop-down-box">
+                    <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+                    <div class="drop-down">
+                        <li class="navbar-links"><a href="/logout">Logout</a></li>
+                        <li><a href="/edit">Editar</a></li>
+                        <li><a href="/delete">Deletar</a></li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
 <p>Você tem certeza que deseja deletar sua conta?<br>Todos os seus dados serão apagados e será necessário criar uma nova conta caso deseje utilizar o BandFriend novamente.<br>Sua conta não poderá mais ser recuperada após ser deletada.</p>
 <a href="/delete/{{user._id}}"><button>Sim, desejo deletar minha conta</button></a>
 <a href="/profile"><button>Cancelar</button></a>
