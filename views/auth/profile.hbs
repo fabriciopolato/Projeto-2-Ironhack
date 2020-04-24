@@ -32,17 +32,17 @@
                             <input type="submit" value="Salvar" id='save-photo'>
                         </div>
                     </form>
-                    <p id="lookingFor-message">Procurando por: {{user.lookingFor}}</p>
+                    <p id="lookingFor-message"><span>Procurando por:</span> {{user.lookingFor}}</p>
                 </div>
                 <div class="name">
                     <div class="name-media">
-                        <h1>{{user.name}} {{user.lastName}}</h1>
-                        <a href="//www.facebook.com/{{user.facebook}}"><i id="face-icon"
-                                class="fab fa-facebook-square fa-2x"></i></a>
-                        <a href="//www.instagram.com/{{user.instagram}}"><i id="insta-icon"
-                                class="fab fa-instagram-square fa-2x"></i></a>
+                        <div class="name-username">
+                            <h1>{{user.name}} {{user.lastName}}</h1>
+                            <h4><span>{{user.username}}</h4></span>
+                        </div>
+                        <a href="//{{user.facebook}}"><i id="face-icon" class="fab fa-facebook-square fa-2x"></i></a>
+                        <a href="//{{user.instagram}}"><i id="insta-icon" class="fab fa-instagram-square fa-2x"></i></a>
                     </div>
-                    <h4>{{user.username}}</h4>
                     <div class="up-left-2">
                         <div class="profile">
                             <h4 class="specialty-level">{{user.specialty}} ({{user.level}})</h4>
@@ -61,7 +61,7 @@
 
             <div class="down-left">
                 <div class="profile-edit">
-                    <h1>Perfil</h1>
+                    <h1>Biografia</h1>
                     <a id="edit-icon" href="/edit">
                         <i class="fas fa-edit fa-lg" id="edit-icon"></i>
                     </a>
@@ -74,28 +74,59 @@
 
         <div class="right">
             <div class="up-right">
-                <h1>Convites</h1>
-                {{#each usersRequestingFriendship}}
-                <a href="/profile/{{_id}}">{{username}} te convidou</a>
-                <br><br>
-                <a href="/invitation-accepted/{{_id}}">Aceitar</a>
-                <a href="/invitation-refused/{{_id}}">Excluir</a>
+                <h1 id="invitation-title">Convites</h1>
                 <br>
-                <br><br>
-                {{/each}}
-            </div>
-
-            <div class="down-right">
-                {{#each friends}}
-                <div class="friends">
-                    <a href="/delete-friend/{{this._id}}">Excluir </a><a
-                        href="/profile/{{this._id}}">{{this.username}}</a>
+                {{#each usersRequestingFriendship}}
+                <div class="invitation-link">
+                    <a href="/profile/{{_id}}">{{username}} te convidou</a>
+                    <div class="accept-delete">
+                        <a href="/invitation-accepted/{{_id}}">Aceitar</a>
+                        <a href="/invitation-refused/{{_id}}">Excluir</a>
+                    </div>
                 </div>
+                <br>
+                <br>
                 {{/each}}
             </div>
         </div>
 
     </section>
+
+    <div class="friends">
+        <h1>Amigos</h1>
+        <div class="cards-container-profile">
+            {{#each friends}}
+            <div class="profile-card">
+
+                <div class="profile-photo-search">
+                    <a href="/profile/{{_id}}"><img src="{{this.imgPath}}" alt="profile photo"></a>
+                    <a id="unfriend" href="/delete-friend/{{this._id}}">Desfazer<br>amizade</a>
+                </div>
+
+                <div class="info-card">
+                    <div class="name-lastname">
+                        <a href="/profile/{{_id}}">{{this.name}} {{this.lastName}}</a>
+                        <br>
+                        <a id="username-link" href="/profile/{{_id}}">{{this.username}}</a>
+                    </div>
+                    <div class="specialty-level">
+                        <br>
+                        <p>{{this.specialty}}</p>
+                        <p class="level-card">{{this.level}}</p>
+                        <br>
+                    </div>
+                    <div class="musical-influence">
+                        <ul>
+                            {{#each this.musicalInfluence}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
 
     <footer>
         <div>
