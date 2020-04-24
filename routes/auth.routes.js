@@ -32,7 +32,7 @@ router.post("/signup", (req, res, next) => {
         username,
         password: hashPass,
         firstLogin: true,
-        welcomeMessage: "Você está muito próximo de montar sua primeira banda de sucesso. Para que os outros integrantes da banda possam te encontrar, complete o seu cadastro!",
+        welcomeMessage: "Para que os outros integrantes da banda possam te encontrar, complete o seu cadastro!",
         imgPath: 'images/noPhoto.png'
       });
 

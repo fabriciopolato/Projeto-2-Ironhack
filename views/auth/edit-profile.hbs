@@ -21,26 +21,30 @@
         </div>
     </nav>
 
-    {{#if firstLogin}}
-    <div class="welcome">
-        <p>{{welcomeMessage}}</p>
-    </div>
-    {{/if}}
 
     <section>
         <form class="edit-form" action="/edit" method="POST" id='edit-form'>
             <div class="form-container">
+                {{#if firstLogin}}
+                <div class="welcome">
+                    <p>{{welcomeMessage}}</p>
+                </div>
+                {{/if}}
+                {{#unless firstLogin}}
                 <h1 class="edit-message">Edite o seu perfil</h1>
+                {{/unless}}
                 <br>
                 <div class="row-1">
                     <div class="column-1 right-align margin-right">
                         <div>
                             <input type="hidden" value="{{_id}}" name="_id">
                         </div>
+                        {{#unless firstLogin}}
                         <div>
                             <label>Usuário:</label>
                             <input type="text" value="{{username}}" name="username">
                         </div>
+                        {{/unless}}
                         <br>
                         <div>
                             <label>Nome:</label>
