@@ -30,11 +30,11 @@
 }
 
 #search-button {
-    background-color: green;
+    background-color: rgb(35, 62, 104);
 }
 
 #search-button:hover {
-    color: black;
+    color: rgb(21, 34, 53);
     background-color: white;
 }
 
@@ -109,17 +109,17 @@
     display: flex;
     flex-direction: row;
     margin: 0 20px 20px 0;
-    border: solid black;
+    border-radius: 5px;
 }
 
 .profile-card a {
-    color: black;
+    color: rgb(21, 34, 53);
     text-decoration: none;
 }
 
 .profile-photo-search img {
     width: 7rem;
-    border: solid black;
+    border: solid rgb(21, 34, 53);
     margin: 1.5rem;
 }
 

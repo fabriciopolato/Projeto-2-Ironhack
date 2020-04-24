@@ -9,9 +9,14 @@
             <ul class="list">
                 <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
                 <li class="navbar-links"><a href="#">Sobre</a></li>
-                <li class="navbar-links"><a href="/logout">Logout</a></li>
-                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
-                <li><a href="/delete">Deletar conta</a></li>
+                <div class="drop-down-box">
+                    <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+                    <div class="drop-down">
+                        <li class="navbar-links"><a href="/logout">Logout</a></li>
+                        <li><a href="/edit-profile">Editar</a></li>
+                        <li><a href="/delete">Deletar</a></li>
+                    </div>
+                </div>
             </ul>
         </div>
     </nav>
@@ -78,7 +83,7 @@
                 <br>
                 {{#each usersRequestingFriendship}}
                 <div class="invitation-link">
-                    <a href="/profile/{{_id}}">{{username}} te convidou</a>
+                    <a href="/profile/{{_id}}"><span>{{username}}</span> te convidou</a>
                     <div class="accept-delete">
                         <a href="/invitation-accepted/{{_id}}">Aceitar</a>
                         <a href="/invitation-refused/{{_id}}">Excluir</a>

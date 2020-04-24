@@ -9,8 +9,14 @@
             <ul class="list">
                 <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
                 <li class="navbar-links"><a href="#">Sobre</a></li>
-                <li class="navbar-links"><a href="/logout">Logout</a></li>
-                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+                <div class="drop-down-box">
+                    <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+                    <div class="drop-down">
+                        <li class="navbar-links"><a href="/logout">Logout</a></li>
+                        <li><a href="/edit-profile">Editar</a></li>
+                        <li><a href="/delete">Deletar</a></li>
+                    </div>
+                </div>
             </ul>
         </div>
     </nav>
@@ -99,7 +105,7 @@
                 <input type="hidden" name="email" value="{{visitedProfile.email}}">
                 <input type="hidden" name="subject"
                     value="BandMate - {{visitedProfile.username}} te enviou uma mensagem">
-                <textarea rows="12" cols="50" type="text" name="message" id="email-message"></textarea>
+                <textarea rows="12" cols="50" type="text" name="message" id="email-message" placeholder="Escreva sua mensagem aqui..."></textarea>
                 <br>
                 <button type="submit">Enviar</button>
             </form>

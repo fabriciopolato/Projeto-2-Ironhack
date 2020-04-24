@@ -9,8 +9,14 @@
             <ul class="list">
                 <li class="navbar-links"><a href="/search"><i class="fas fa-search"></i></a></li>
                 <li class="navbar-links"><a href="#">Sobre</a></li>
-                <li class="navbar-links"><a href="/logout">Logout</a></li>
-                <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+                <div class="drop-down-box">
+                    <li id="profile-icon"><a href="/profile"><i class="fas fa-user-circle fa-2x"></i></a></li>
+                    <div class="drop-down">
+                        <li class="navbar-links"><a href="/logout">Logout</a></li>
+                        <li><a href="/edit-profile">Editar</a></li>
+                        <li><a href="/delete">Deletar</a></li>
+                    </div>
+                </div>
             </ul>
         </div>
     </nav>
@@ -202,7 +208,7 @@
             <br>
             <div class="btn-edit">
                 <button id="save-btn-edit" type="submit">Salvar</button>
-                <a href="/profile"><button>Cancelar</button></a>
+                <a href="/profile"><button id="cancel-btn-edit">Cancelar</button></a>
             </div>
         </form>
     </section>

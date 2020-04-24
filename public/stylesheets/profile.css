@@ -1,7 +1,3 @@
-/* .profile {
-    background-color: lightgray;
-} */
-
 .profile-container {
   display: flex;
   flex-direction: row;
@@ -54,16 +50,16 @@
 }
 
 .name-username {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .name-username h1 {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .name-username h4 {
-    margin: 0;
+  margin: 0;
 }
 
 .up-right {
@@ -71,9 +67,11 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  border: 2px solid rgb(21, 34, 53);
+  /* border: 2px solid rgb(21, 34, 53); */
   height: auto;
   margin: 20px 0 0 60px;
+  box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.36);
+  border-radius: 5px;
 }
 
 .email-box {
@@ -85,17 +83,17 @@
   padding-left: 50px;
 }
 
-.email-box h1 {
-  border-bottom: 3px solid firebrick;
-}
 
 #invitation-title {
-  border-bottom: 3px solid firebrick;
   margin: 0 auto;
 }
 
 .invitation-link {
   margin-left: 10px;
+}
+
+.invitation-link span {
+  color: firebrick;
 }
 
 .accept-delete {
@@ -104,7 +102,7 @@
 }
 
 .accept-delete a:hover {
-    color: firebrick;
+  color: firebrick;
 }
 
 #lookingFor-message {
@@ -144,7 +142,6 @@
   border-radius: 4px;
   background-color: rgb(21, 34, 53);
   padding: 5px;
-  /* width: 20%; */
 }
 
 .social-media {
@@ -158,7 +155,6 @@
 }
 
 .profile-edit h1 {
-  border-bottom: 3px solid firebrick;
   margin: 0;
 }
 
@@ -181,6 +177,10 @@
   padding-left: 20px;
 }
 
+.profile-card {
+  box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.36);
+}
+
 .profile-photo-search {
   display: flex;
   flex-direction: column;
@@ -189,7 +189,6 @@
 .friends h1 {
   display: inline;
   margin-left: 500px;
-  border-bottom: 3px solid firebrick;
 }
 
 .friends {
@@ -205,5 +204,39 @@
 }
 
 #unfriend:hover {
-    color: firebrick;
+  color: firebrick;
+}
+
+.drop-down {
+  position: absolute;
+  top: 45px;
+  right: 0px;
+  padding: 0px 5px;
+  height: 0;
+  overflow: hidden;
+}
+
+.drop-down li {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0 15px;
+}
+
+.drop-down li a {
+  color: white;
+}
+
+.drop-down-box {
+  height: 100%;
+  padding-bottom: 10px;
+}
+
+.drop-down-box:hover > .drop-down {
+  background-color: firebrick;
+  padding: 10px 5px;
+  height: auto;
+}
+
+.drop-down li a:hover {
+  color: rgb(21, 34, 53);
 }

@@ -69,8 +69,18 @@
   height: 50px;
 }
 
+#cancel-btn-edit:hover {
+  color: rgb(21, 34, 53);
+  background-color: white;
+}
+
 #save-btn-edit {
-  background-color: green;
+  background-color: rgb(35, 62, 104);
+}
+
+#save-btn-edit:hover {
+  color: rgb(21, 34, 53);
+  background-color: white;
 }
 
 .btn-edit button:hover {
