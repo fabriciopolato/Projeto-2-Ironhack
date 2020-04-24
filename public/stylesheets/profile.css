@@ -1,174 +1,16 @@
-/* .profile-container {
-    margin: 30px 0 0 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.container-nav {
-    background-color: firebrick;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 99;
-}
-
-.list {
-    display: flex;
-    align-items: center;
-    margin: 0;
-}
-
-.navbar-links a:hover {
-    color: white;
-    border-bottom: firebrick solid;
-}
-
-.profile-container {
-    margin: 30px 0 0 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.left-side {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    text-align: right;
-    width: 25vw;
-    margin-top: 60px;
-    margin-left: 1vw;
-}
-
-.left-side .name h4 {
-    color: firebrick;
-}
-
-.invitation-button-border {
-    border: solid rgb(21,34,53);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 6.8vw;
-    height: 2.8vw;
-    border-radius: 2px;
-    margin: 3px;
-    margin-right: 0;
-}
-
-.invitation-button-border:hover {
-    background-color: rgb(21,34,53);
-}
-
-.invitation {
-    line-height: 2vw;
-    font-family: "Airbnb Cereal App Medium";
-    color: white;
-    text-align: center;
-    border-radius: 2px;
-    margin: 0;
-    width: 6vw;
-    height: 2vw;
-    background-color: rgb(21,34,53);
-}
-
-.invitation a {
-    color: white;
-    text-decoration: none;
-}
-
-.profile-photo {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 20vw;
-    margin-top: 60px;
-    right: 47.5vw;
-}
-
-.profile-photo img {
-    width: 9.5rem;
-    border: solid rgb(21,34,53);
-}
-
-.photo-button-border {
-    border: solid rgb(21,34,53);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10vw;
-    border-radius: 2px;
-    margin: 3px;
-    margin-right: 0;
-    background-color: rgb(21,34,53);
-}
-
-
-.profile-photo label {
-    line-height: 2vw;
-    font-family: "Airbnb Cereal App Medium";
-    color: white;
-    text-align: center;
-    border-radius: 2px;
-    margin: 0;
-    width: 7vw;
-    height: 2vw;
-    background-color: rgb(21,34,53);
-}
-
-.profile-photo label:hover {
-    cursor: pointer;
-}
-.profile-photo #photo {
-    width: 0;
-    height: 0;
-}
-
-.right-side {
-    display: flex;
-    flex-direction: row;
-    text-align: left;
-    margin-top: 60px;
-    right: 24vw;
-}
-
-.right-side .specialty-level {
-    color: firebrick;
-}
-
-#edit-icon {
-    color: rgb(21,34,53);
-    margin-left: 10px;
-}
-
-.profile-edit {
-    display: flex;
-    flex-direction: row;
-}
-
-.invitation-card {
-    color: rgb(21,34,53);
-    border-radius: 5px;
-    width: 20vw;
-    margin-top: 60px;
-    position: fixed;
-    top: 30;
-    right: 1vw;
-}
-.invitation-card h1 {
-    text-align: center;
+/* .profile {
+    background-color: lightgray;
 } */
 
 .profile-container {
   display: flex;
   flex-direction: row;
-  margin: 80px auto;
+  margin: 80px auto 20px;
+  padding: 20px;
   width: 100vw;
   max-width: 1100px;
+  box-shadow: 0px 0px 43px 0px rgba(0, 0, 0, 0.41);
+  padding-bottom: 50px;
 }
 
 .left,
@@ -178,8 +20,14 @@
   width: 50%;
 }
 
-.left, .right {
-    padding: 0 10px;
+.left {
+  height: auto;
+  padding: 0 40px;
+  padding-right: 0;
+}
+
+.right {
+  padding-right: 40px;
 }
 
 .up-left {
@@ -197,20 +45,76 @@
 }
 
 .profile-photo img {
-    margin: 0;
-    width: 100%;
-  }
+  margin: 0;
+  width: 100%;
+}
 
 .up-left-2 {
   text-align: right;
 }
 
-.name {
-  
+.name-username {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-username h1 {
+    margin-bottom: 0;
+}
+
+.name-username h4 {
+    margin: 0;
+}
+
+.up-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: 2px solid rgb(21, 34, 53);
+  height: auto;
+  margin: 20px 0 0 60px;
+}
+
+.email-box {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30px;
+  padding-left: 50px;
+}
+
+.email-box h1 {
+  border-bottom: 3px solid firebrick;
+}
+
+#invitation-title {
+  border-bottom: 3px solid firebrick;
+  margin: 0 auto;
+}
+
+.invitation-link {
+  margin-left: 10px;
+}
+
+.accept-delete {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accept-delete a:hover {
+    color: firebrick;
 }
 
 #lookingFor-message {
   text-align: left;
+}
+
+.specialty-level,
+.name span,
+#lookingFor-message span {
+  color: firebrick;
 }
 
 .name-media {
@@ -254,6 +158,7 @@
 }
 
 .profile-edit h1 {
+  border-bottom: 3px solid firebrick;
   margin: 0;
 }
 
@@ -266,5 +171,39 @@
 }
 
 .bio p {
-    text-align: justify;
+  text-align: justify;
+}
+
+.cards-container-profile {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.profile-photo-search {
+  display: flex;
+  flex-direction: column;
+}
+
+.friends h1 {
+  display: inline;
+  margin-left: 500px;
+  border-bottom: 3px solid firebrick;
+}
+
+.friends {
+  box-shadow: 0px 0px 43px 0px rgba(0, 0, 0, 0.41);
+  width: 74.3vw;
+  margin-left: 190px;
+  margin-bottom: 30px;
+  padding-top: 20px;
+}
+
+#unfriend {
+  padding-left: 25px;
+}
+
+#unfriend:hover {
+    color: firebrick;
 }

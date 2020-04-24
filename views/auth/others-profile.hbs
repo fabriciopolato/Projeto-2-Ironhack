@@ -16,77 +16,95 @@
     </nav>
 
 
-    <section>
-        <div class="profile-container">
-            <div class="left-side">
-                <div class="name">
-                    <h1>{{visitedProfile.name}} {{visitedProfile.lastName}}</h1>
-                    <h4>{{visitedProfile.username}}</h4>
-                </div>
-                <div class="bio">
-                    <p>{{visitedProfile.bio}}</p>
-                </div>
-                {{#unless invitationId}}
-                {{#unless user}}
-                <form action="/profile/{{visitedProfile._id}}" method="POST">
-                    <div class="invitation-button-border">
-                        <div class="invitation">
-                            <input type="submit" value="Convidar">
-                        </div>
-                    </div>
-                </form>
-                {{/unless}}
-                {{/unless}}
+    <section class="profile-container">
 
-                {{#if invitationId}}
+        <div class="left">
+            <div class="up-left">
+                <div class="profile-photo">
+
+                    <img src="{{visitedProfile.imgPath}}" alt="profile photo">
+
+                    <form action="/profile" method="POST" enctype="multipart/form-data">
+                        <div class="photo-button-border">
+                            <label for="photo">Mudar Foto</label>
+                            <input type="file" name="photo" id="photo" hidden>
+                            <input type="submit" value="Salvar" id='save-photo'>
+                        </div>
+                    </form>
+                    <p id="lookingFor-message"><span>Procurando por:</span>{{visitedProfile.lookingFor}}</p>
+
+                    {{#unless invitationId}}
+                    {{#unless user}}
+                    <form action="/profile/{{visitedProfile._id}}" method="POST">
+                        <div class="invitation-button-border">
+                            <div class="invitation">
+                                <input type="submit" value="Convidar">
+                            </div>
+                        </div>
+                    </form>
+                    {{/unless}}
+                    {{/unless}}
+
+                    {{#if invitationId}}
                     <div class="invitation-button-border">
                         <div class="invitation">
                             <input type="submit" value="Enviado">
                         </div>
                     </div>
-                {{/if}}
-            </div>
-
-            <div class="center">
-                <div>
-                    <img src="{{visitedProfile.imgPath}}" alt="profile photo">
-                </div>
-            </div>
-
-            <div class="right-side">
-                <div class="profile">
-                    <div class="profile-edit">
-                        <h1>Perfil </h1>
-                    </div>
-                    <h4 class="specialty-level">{{visitedProfile.specialty}} ({{visitedProfile.level}})</h4>
-                    <p>{{visitedProfile.city}} / {{visitedProfile.state}}</p>
-                    <p>{{visitedProfile.musicalInfluence}}</p>
-                </div>
-                <div class="personal-info">
-                    <h1>Informações Pessoais</h1>
-                    <p>{{visitedProfile.facebook}}</p>
-                    <p>{{visitedProfile.instagram}}</p>
-                    <p>{{visitedProfile.email}}</p>
-                    {{#if visitedProfile.age}}
-                    <p>{{visitedProfile.age}} anos</p>
                     {{/if}}
-                    <p>{{visitedProfile.gender}}</p>
+                </div>
+                <div class="name">
+                    <div class="name-media">
+                        <div class="name-username">
+                            <h1>{{visitedProfile.name}} {{visitedProfile.lastName}}</h1>
+                            <h4><span>{{visitedProfile.username}}</h4></span>
+                        </div>
+                        <a href="//www.facebook.com/{{visitedProfile.facebook}}"><i id="face-icon"
+                                class="fab fa-facebook-square fa-2x"></i></a>
+                        <a href="//www.instagram.com/{{visitedProfile.instagram}}"><i id="insta-icon"
+                                class="fab fa-instagram-square fa-2x"></i></a>
+                    </div>
+                    <div class="up-left-2">
+                        <div class="profile">
+                            <h4 class="specialty-level">{{visitedProfile.specialty}} ({{visitedProfile.level}})</h4>
+                            <p>{{visitedProfile.city}} / {{visitedProfile.state}}</p>
+                            <p>{{visitedProfile.musicalInfluence}}</p>
+                        </div>
+                        <div class="personal-info">
+                            {{#if visitedProfile.age}}
+                            <p>{{visitedProfile.age}} anos</p>
+                            {{/if}}
+                            <p>{{visitedProfile.gender}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            {{#if user}}
-            <div class="invitation-card">
-                <h1>Envie um E-mail para {{visitedProfile.username}}</h1>
-                <form action="/send-email" method="post">
-                    <input type="hidden" name="email" value="{{visitedProfile.email}}">
-                    <input type="hidden" name="subject"
-                        value="BandMate - {{visitedProfile.username}} te enviou uma mensagem">
-                    <label for="">Mensagem:</label>
-                    <textarea type="text" name="message" id=""></textarea>
-                    <button type="submit">Enviar</button>
-                </form>
+
+            <div class="down-left">
+                <div class="profile-edit">
+                    <h1>Biografia</h1>
+                    <a id="edit-icon" href="/edit">
+                        <i class="fas fa-edit fa-lg" id="edit-icon"></i>
+                    </a>
+                </div>
+                <div class="bio">
+                    <p>{{visitedProfile.bio}}</p>
+                </div>
             </div>
-            {{/if}}
         </div>
+
+        <div class="email-box">
+            <h1>Envie um E-mail para {{visitedProfile.username}}</h1>
+            <form action="/send-email" method="post">
+                <input type="hidden" name="email" value="{{visitedProfile.email}}">
+                <input type="hidden" name="subject"
+                    value="BandMate - {{visitedProfile.username}} te enviou uma mensagem">
+                <textarea rows="12" cols="50" type="text" name="message" id="email-message"></textarea>
+                <br>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
     </section>
 
     <footer>
